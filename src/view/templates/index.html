@@ -13,24 +13,23 @@
         <br>
         <label for="pwd"></label>
         <input type="password" name = "senha">
+        <input type="hidden" id="finger" name="finger">
         <button type="submit">Entrar</button>
         
     </form>
-    <script>
-  // Initialize the agent at application startup.
-  // If you're using an ad blocker or Brave/Firefox, this import will not work.
-  // Please use the NPM package instead: https://t.ly/ORyXk
+
+<script>
+
   const fpPromise = import('https://openfpcdn.io/fingerprintjs/v5')
     .then(FingerprintJS => FingerprintJS.load())
-
-  // Get the visitor identifier when you need it.
   fpPromise
     .then(fp => fp.get())
     .then(result => {
       // This is the visitor identifier:
       const visitorId = result.visitorId
-      console.log(visitorId)
+      document.getElementById("finger").value = visitorId;
     })
+    
 </script>
 </body>
 </html>
