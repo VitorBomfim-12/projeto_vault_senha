@@ -20,17 +20,19 @@ class DB_MANAGER:
 
      # INSERIR DADOS DO USUARIO
      @staticmethod
-     def inserir_usuario(nome,senha_hash,dica,email):
+     def inserir_usuario(nome,senha_hash,dica,email,fingerprint):
           connect=DB_MANAGER.db_connect()
           cursor=connect.cursor()
-          sql="INSERT INTO usuarios(nome,senha_hash,dica,email) values(%s,%s,%s,%s)"
-          cursor.execute(sql,(nome,senha_hash,dica,email))
+          sql="INSERT INTO usuarios(nome,senha_hash,dica,email) values(%s,%s,%s,%s,%s)"
+          cursor.execute(sql,(nome,senha_hash,dica,email,fingerprint))
           connect.commit()
           if cursor.close() and connect.close():
                print("FECHOU")
       # FIM
-       
+     @staticmethod
+     def inserir_senhas():
       
             
+
 
 
