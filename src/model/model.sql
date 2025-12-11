@@ -1,31 +1,33 @@
 Create database Vault_76;              
      use Vault_76;
                    
-    
+   --Tabela usuário 
     CREATE TABLE usuarios(
-    id int primary key auto_increment,
-    nome varchar(50) not null,
-    senha_hash varchar(100) not null,
-    dica varchar(30),
-    email varchar(100) not null,
-    fingerprint varchar(100)
+    id int primary key auto_increment,--Chave que serve de FK para as duas outras tabelas
+    nome varchar(50) not null, -- username do usuário
+    senha_hash varchar(100) not null,--Armazena hash da senha
+    dica varchar(30),-- Dica sobre mestra(principal) do usuário
+    email varchar(100) not null,-- Email do usuário no Vault 74
+    fingerprint varchar(100) -- Identificação do pc do usuário
                    
     );
+    -- TABELA de senha
     CREATE TABLE senha(
-    id_senha int primary key auto_increment,
-    senha_hash varchar(100) not null,
-    url varchar(250),
-    descricao varchar(100),
-    site varchar(100),
-    user_id_FK int,
+    id_senha int primary key auto_increment, -- Id proprio dessa tabela
+    senha_hash varchar(100) not null, -- Senhas armazenadas do usuário
+    url varchar(250),--Url do site da senha cadastrada
+    descricao varchar(100),-- descricao da senha adicionada
+    site varchar(100),-- nome do site da senha adicionada
+    user_id_FK int,-- chave estrangeira do id de usuarios
     Foreign Key (user_id_FK) references usuarios(id)                       
                    
                    
                    );
+     -- TABELA de mfa
     CREATE TABLE mfa(
-    id int primary key auto_increment,
-    user_id_FK int not null,
-    cod_mfa varchar(255) not null,
-    cod_data_cricao DATETIME not null,
+    id int primary key auto_increment,-- id proprio da tabela
+    user_id_FK int not null,--chave estrangeira do id de usuarios
+    cod_mfa varchar(255) not null, -- codigo temporario para verificação de 2 fatores
+    cod_data_cricao DATETIME not null,-- cod_data_cricao
     Foreign Key (user_id_FK) references usuarios(id)                  
     );

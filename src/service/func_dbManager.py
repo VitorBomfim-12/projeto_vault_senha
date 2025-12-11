@@ -4,6 +4,7 @@ import bcrypt
 from dotenv import load_dotenv
 from datetime import datetime
 import random
+from cryptography.fernet import Fernet
 load_dotenv()
 
                
@@ -82,5 +83,23 @@ class DB_MANAGER:
         
      ### FIM DAS FUNÇÕES DE INSERÇÃO DE DADOS
      #-------------------------------------------------------------------------------------------------
+chave=Fernet.generate_key()
+fernet=Fernet(chave)
+def exibir_senhas(user_id):
+   con=DB_MANAGER.db_connect()
+   cursor=con.cursor()
+   sql="SELECT senha_hash,url,site FROM senha WHERE user_id_FK=%s"
+   cursor.execute(sql,(user_id))
+   senhas_do_usuario=cursor.fetchall()
+   con.close()
+   cursor.close()
+   return senhas_do_usuario
 
 
+p="112434545776"
+def crip(senha):
+   return  fernet.encrypt(senha.encode()).decode()
+p=crip(p)
+def descrip(senha):
+   return fernet.decrypt(senha.encode()).decode()
+print(descrip(p))
