@@ -6,7 +6,8 @@ from datetime import datetime
 import random
 from cryptography.fernet import Fernet
 load_dotenv()
-
+chave=os.getenv('chave')
+fernet=Fernet(chave)
                
 
 class DB_MANAGER:
@@ -46,7 +47,7 @@ class DB_MANAGER:
           connect.close()
      # Função do bcrypt para gerar hash da senha
      @staticmethod
-     def hash_da_senha(senha): # FUNÇÃO AUXILIAR DA inserir_usuario
+     def hash_da_senha(senha): # FUNÇÃO AUXILIAR DA |inserir_usuario|
       salt=bcrypt.gensalt()
       hashed=bcrypt.hashpw(senha.encode('utf-8'),salt)
       return hashed
@@ -58,11 +59,18 @@ class DB_MANAGER:
      def inserir_senhas(senha_hash,url,descricao,site,user_id_FK):
          connect=DB_MANAGER.db_connect()
          cursor=connect.cursor()
-         sql="INSERT INTO senha(senha_hash,url,descricao,site,user_id_FK) values(%s,%s,%s,%s,%s)"
-         cursor.execute(sql,(senha_hash,url,descricao,site,user_id_FK))
+         sql="INSERT INTO senha(senha_hash,url,descricao,site,user_id_FK,data_criacao) values(%s,%s,%s,%s,%s)"
+         senha_hash=DB_MANAGER.criptografar_senha(senha_hash)
+         horario=datetime.now()
+         cursor.execute(sql,(senha_hash,url,descricao,site,user_id_FK,horario))
          connect.commit()
          cursor.close()
          connect.close()
+
+     @staticmethod
+     def criptografar_senha(senha): # Função auxiliar da inserir_senhas
+           return  fernet.encrypt(senha.encode()).decode() 
+     
      # FIM
      
      # INSERÇÃO DO MFA
@@ -83,23 +91,32 @@ class DB_MANAGER:
         
      ### FIM DAS FUNÇÕES DE INSERÇÃO DE DADOS
      #-------------------------------------------------------------------------------------------------
-chave=Fernet.generate_key()
-fernet=Fernet(chave)
-def exibir_senhas(user_id):
-   con=DB_MANAGER.db_connect()
-   cursor=con.cursor()
-   sql="SELECT senha_hash,url,site FROM senha WHERE user_id_FK=%s"
-   cursor.execute(sql,(user_id))
-   senhas_do_usuario=cursor.fetchall()
-   con.close()
-   cursor.close()
-   return senhas_do_usuario
+     ### FUNÇÕES DE EXIBIÇÃO DE DADOS
+     @staticmethod
+     def exibir_senhas(user_id):
+            con=DB_MANAGER.db_connect()
+            cursor=con.cursor()
+            sql="SELECT senha_hash,url,site,descricao FROM senha WHERE user_id_FK=%s"
+            cursor.execute(sql,(user_id,))
+            senhas_do_usuario=cursor.fetchall()
+            for senha in senhas_do_usuario:
+                if 'senha_hash' in senha:
+                    senha['senha_hash']=DB_MANAGER.descrip_senha(senha['senha_hash'])
+                    
+            cursor.close()    
+            con.close()
+            
+            return senhas_do_usuario
+     @staticmethod
+     def descrip_senha(senha):#Função auxiliar da |exibir_senhas|
+           
+        return fernet.decrypt(senha.encode()).decode() 
+     
+
+     
+
+    
 
 
-p="112434545776"
-def crip(senha):
-   return  fernet.encrypt(senha.encode()).decode()
-p=crip(p)
-def descrip(senha):
-   return fernet.decrypt(senha.encode()).decode()
-print(descrip(p))
+
+
