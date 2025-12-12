@@ -6,3 +6,5 @@ def hash_verify(hash):
     
     for caractere in hash:
         if caractere.isupper():return False
+
+    return True
