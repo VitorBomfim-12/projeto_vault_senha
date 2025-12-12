@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="./img_readme/vault_76_em_baixo.png" width="400" alt="Diagrama Vault 76">
+</div>
+
 # Vault-76 Password Manager
 
 ## 🛡️ Sobre o Projeto
@@ -16,10 +20,7 @@ O objetivo principal do projeto é fornecer uma solução segura e intuitiva par
 ## 💻 Funcionalidades (propostas)
 
 * Armazenamento seguro com criptografia avançada
-* Compartilhamento interno com controle de permissões
-* Auditoria e histórico de acesso
 * Autenticação em múltiplos fatores (MFA)
-* Sistema de categorias e etiquetas
 * Interface intuitiva e responsiva
 
 ## 📁 Estrutura do Projeto
