@@ -1,5 +1,7 @@
-from flask import Flask, request,redirect,url_for,render_template
+from flask import Flask, request,redirect,url_for,render_template,session
 from service.hash_verify import hash_verify
+from service.func_dbManager import DB_MANAGER
+
 
 class LoginManager:
 
@@ -13,21 +15,26 @@ class LoginManager:
             tentativa_suspeita=request.form['user_session_id']
             
             if tentativa_suspeita:
-                print("tentantiva suspeita!")
                 return redirect(url_for('index'))
-                # usar o conceito de honeypot field para detectar ataques de bots.
-                #redirecionar para MFA
-            
-            if not hash_fijs or not hash_verify():
-                pass
-                #return (redirect(url_for()))
-                #criar função de MFA e redirecionar para ela.
-            
+                
             if not email or not senha:
                 return redirect ("index.html", error = "Preencha todos os campos!")
-                
+
             else:
-                print("sucesso!!!")
-                return redirect(url_for('index'))
+                
+                status_user,user_id = DB_MANAGER.indentify_user(email,senha)
+
+                if not status_user : return (redirect('index.html', error ="este usuário não existe!"))
+
+                session['user_login_attempt'] = user_id
+                
+                if not hash_fijs or not hash_verify():
+                 return (redirect(url_for('mfa')))
+               
+                if status_user == 'user': return (redirect(url_for('userpage')))
+                
+                if status_user =='admin':# return (redirect(url_for('userpage')))
+                    pass
+                    #criar rota de ADM
           
         return render_template ('index.html')

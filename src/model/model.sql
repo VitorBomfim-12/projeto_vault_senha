@@ -9,6 +9,7 @@ Create database Vault_76;
     dica varchar(30),-- Dica sobre chave mestra(principal) do usuário
     email varchar(100) not null,-- Email do usuário no Vault 74
     fingerprint varchar(100) -- Identificação do pc do usuário
+    is_adm BOOLEAN DEFAULT FALSE
     
             );
     -- TABELA DO TIME DE SEGURANÇA

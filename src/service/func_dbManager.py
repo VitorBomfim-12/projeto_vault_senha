@@ -7,7 +7,8 @@ from datetime import datetime
 import random
 from cryptography.fernet import Fernet
 
-load_dotenv()
+
+
 chave=os.getenv('chave')
 fernet=Fernet(chave)
 dotenv.load_dotenv()
@@ -114,6 +115,27 @@ class DB_MANAGER:
      def descrip_senha(senha):#Função auxiliar da |exibir_senhas|
            
         return fernet.decrypt(senha.encode()).decode() 
+     
+     @staticmethod
+     def indentify_user(email : str, senha: str) -> tuple [str , str]:
+          
+          con=DB_MANAGER.db_connect()
+          cursor=con.cursor()
+          sql = "SELECT email,senha_hash,is_admin FROM usuarios WHERE email = %s "
+          cursor.execute(sql,(email))
+          usuario = cursor.fetchone()
+          cursor.close()
+          con.close()
+
+          if not usuario:
+              return False,'not in'
+          
+          if bcrypt.check_password_hash(usuario['senha_hash'],senha) and usuario['is_admin'] == False:
+              return 'user',usuario['id']
+          
+          if  bcrypt.check_password_hash(usuario['senha_hash'],senha) and usuario['is_admin'] == True:
+              return 'admin',usuario['id']             
+         
      
 
      
