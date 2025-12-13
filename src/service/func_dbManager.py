@@ -94,6 +94,10 @@ class DB_MANAGER:
         
      ### FIM DAS FUNÇÕES DE INSERÇÃO DE DADOS
      #-------------------------------------------------------------------------------------------------
+    
+    
+    
+    
      ### FUNÇÕES DE EXIBIÇÃO DE DADOS
      @staticmethod
      def exibir_senhas(user_id : int):
@@ -117,6 +121,11 @@ class DB_MANAGER:
      
     #FIM DAS FUNÇÕES DE IDENTIFICAÇÃO
       
+    
+    
+    
+    
+    
      # FUNÇÕES DE IDENTIFICAÇÃO
      @staticmethod
      def indentify_user(email : str, senha: str) -> tuple [str , str]:
@@ -138,9 +147,40 @@ class DB_MANAGER:
           if  bcrypt.check_password_hash(usuario['senha_hash'],senha) and usuario['is_admin'] == True:
               return 'admin',usuario['id']             
          
-     
+     #FIM DE FUNÇÕES DE IDENTIFICAÇÃO     
+     #-------------------------------------------------------------------
+     # FUNÇÕES DE DELETE
+     @staticmethod
+     def deletar_mfa(id_user_FK : int):
+         con=DB_MANAGER.db_connect()
+         cursor=con.cursor()
+         sql="DELETE FROM mfa WHERE user_id_FK=%s"
+         cursor.execute(sql,(id_user_FK,))
+         con.commit()
+         cursor.close()
+         con.close()
+     @staticmethod
+     def deletar_senha(id_senha : int):
+         con=DB_MANAGER.db_connect()
+         cursor=con.cursor()
+         sql='DELETE FROM senha WHERE id_senha=%s'
+         cursor.execute(sql,(id_senha,))
+         con.commit()
+         cursor.close()
+         con.close()
+    
+     @staticmethod
+     def deletar_usuario(email : str):
+         con=DB_MANAGER.db_connect()
+         cursor=con.cursor()
+         sql="DELETE FROM usuarios WHERE email=%s"
+         cursor.execute(sql,(email))
+         con.commit()
+         cursor.close()
+         con.close()
 
-     
+
+
 
 
 

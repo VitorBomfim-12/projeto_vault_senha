@@ -26,10 +26,11 @@ Create database Vault_76;
     url varchar(250),-- Url do site da senha cadastrada
     descricao varchar(100),-- descricao da senha adicionada
     site varchar(100),-- nome do site da senha adicionada
-    user_id_FK int,-- chave estrangeira do id de usuarios
-    Foreign Key (user_id_FK) references usuarios(id),
+    user_id_FK int,
     senha_segura BOOLEAN DEFAULT TRUE not null,
-    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP                   
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,   
+     Foreign Key (user_id_FK) references usuarios(id)  -- chave estrangeira do id de usuarios
+       ON DELETE CASCADE              
                    
                    
                    );
@@ -39,7 +40,8 @@ Create database Vault_76;
     user_id_FK int not null,-- chave estrangeira do id de usuarios
     cod_mfa varchar(255) not null, -- codigo temporario para verificação de 2 fatores
     cod_data_cricao DATETIME DEFAULT CURRENT_TIMESTAMP,-- cod_data_cricao
-    Foreign Key (user_id_FK) references usuarios(id)                  
+    Foreign Key (user_id_FK) references usuarios(id)    
+     ON DELETE CASCADE              
     );
     
    

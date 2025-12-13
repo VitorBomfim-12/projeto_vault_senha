@@ -1,6 +1,6 @@
 from flask import Flask, request,redirect,url_for,render_template,session
-from service.hash_verify import hash_verify
-from service.func_dbManager import DB_MANAGER
+from src.service.hash import hash_verify
+from src.service.func_dbManager import DB_MANAGER
 
 
 class LoginManager:

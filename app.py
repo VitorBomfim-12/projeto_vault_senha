@@ -3,7 +3,7 @@ from flask import Flask
 from config import Config
 from src.controller.usercontroler import MyFlaskApp
 from src.controller.logincontroler import LoginManager
-from flask_cors import CORS
+
 
 
 app = Flask(__name__,template_folder=os.path.join('src/view','templates'),
