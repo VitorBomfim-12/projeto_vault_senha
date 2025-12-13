@@ -1,4 +1,5 @@
-Create database Vault_76;              
+Create database Vault_76;  
+          
      use Vault_76;
                    
    -- Tabela usuário 
@@ -8,7 +9,7 @@ Create database Vault_76;
     senha_hash varchar(100) not null,-- Armazena hash da senha
     dica varchar(30),-- Dica sobre chave mestra(principal) do usuário
     email varchar(100) not null,-- Email do usuário no Vault 74
-    fingerprint varchar(100) -- Identificação do pc do usuário
+    fingerprint varchar(100), -- Identificação do pc do usuário
     is_adm BOOLEAN DEFAULT FALSE
     
             );
@@ -25,10 +26,11 @@ Create database Vault_76;
     url varchar(250),-- Url do site da senha cadastrada
     descricao varchar(100),-- descricao da senha adicionada
     site varchar(100),-- nome do site da senha adicionada
-    user_id_FK int,-- chave estrangeira do id de usuarios
-    Foreign Key (user_id_FK) references usuarios(id),
+    user_id_FK int,
     senha_segura BOOLEAN DEFAULT TRUE not null,
-    data_criacao DATETIME NOT NULL                       
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,   
+     Foreign Key (user_id_FK) references usuarios(id)  -- chave estrangeira do id de usuarios
+       ON DELETE CASCADE              
                    
                    
                    );
@@ -37,6 +39,9 @@ Create database Vault_76;
     id int primary key auto_increment,-- id proprio da tabela
     user_id_FK int not null,-- chave estrangeira do id de usuarios
     cod_mfa varchar(255) not null, -- codigo temporario para verificação de 2 fatores
-    cod_data_cricao DATETIME not null,-- cod_data_cricao
-    Foreign Key (user_id_FK) references usuarios(id)                  
+    cod_data_cricao DATETIME DEFAULT CURRENT_TIMESTAMP,-- cod_data_cricao
+    Foreign Key (user_id_FK) references usuarios(id)    
+     ON DELETE CASCADE              
     );
+    
+   
