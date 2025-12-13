@@ -3,15 +3,14 @@ import os
 import dotenv
 import bcrypt
 from dotenv import load_dotenv
-from datetime import datetime
 import random
 from cryptography.fernet import Fernet
 
 
-
+load_dotenv()
 chave=os.getenv('chave')
 fernet=Fernet(chave)
-dotenv.load_dotenv()
+
                
 
 class DB_MANAGER:
@@ -35,7 +34,7 @@ class DB_MANAGER:
      
        
      @staticmethod
-     def inserir_usuario(nome,senha_hash,dica,email,fingerprint):
+     def inserir_usuario(nome : str,senha_hash : str,dica : str,email : str,fingerprint : str):
           connect=DB_MANAGER.db_connect()
           cursor=connect.cursor()
           sql="INSERT INTO usuarios(nome,senha_hash,dica,email,fingerprint) values(%s,%s,%s,%s,%s)"
@@ -51,7 +50,7 @@ class DB_MANAGER:
           connect.close()
      # Função do bcrypt para gerar hash da senha
      @staticmethod
-     def hash_da_senha(senha): # FUNÇÃO AUXILIAR DA |inserir_usuario|
+     def hash_da_senha(senha : str): # FUNÇÃO AUXILIAR DA |inserir_usuario|
       salt=bcrypt.gensalt()
       hashed=bcrypt.hashpw(senha.encode('utf-8'),salt)
       return hashed
@@ -60,34 +59,34 @@ class DB_MANAGER:
 
       #INSERIR AS SENHAS DO USUARIO NA PLATAFORMA VAULT 76
      @staticmethod
-     def inserir_senhas(senha_hash,url,descricao,site,user_id_FK):
+     def inserir_senhas(senha_hash : str,url : str,descricao : str,site : str,user_id_FK : int):
          connect=DB_MANAGER.db_connect()
          cursor=connect.cursor()
-         sql="INSERT INTO senha(senha_hash,url,descricao,site,user_id_FK,data_criacao) values(%s,%s,%s,%s,%s)"
+         sql="INSERT INTO senha(senha_hash,url,descricao,site,user_id_FK) values(%s,%s,%s,%s,%s)"
          senha_hash=DB_MANAGER.criptografar_senha(senha_hash)
-         horario=datetime.now()
-         cursor.execute(sql,(senha_hash,url,descricao,site,user_id_FK,horario))
+         
+         cursor.execute(sql,(senha_hash,url,descricao,site,user_id_FK))
          connect.commit()
          cursor.close()
          connect.close()
 
      @staticmethod
-     def criptografar_senha(senha): # Função auxiliar da inserir_senhas
+     def criptografar_senha(senha : str): # Função auxiliar da inserir_senhas
            return  fernet.encrypt(senha.encode()).decode() 
      
      # FIM
      
      # INSERÇÃO DO MFA
      @staticmethod
-     def gerador_mfa(user_id_FK):
+     def gerador_mfa(user_id_FK : int):
        
        senha_6_digitos = random.randint(100000, 999999)
-       horario=datetime.now()
+       
 
        connect=DB_MANAGER.db_connect()
        cursor=connect.cursor()
-       sql="INSERT INTO mfa(user_id_FK,cod_mfa,cod_data_cricao) values(%s,%s,%s)"
-       cursor.execute(sql,(user_id_FK,senha_6_digitos,horario))
+       sql="INSERT INTO mfa(user_id_FK,cod_mfa) values(%s,%s)"
+       cursor.execute(sql,(user_id_FK,senha_6_digitos))
        connect.commit()
        cursor.close()
        connect.close()
@@ -97,7 +96,7 @@ class DB_MANAGER:
      #-------------------------------------------------------------------------------------------------
      ### FUNÇÕES DE EXIBIÇÃO DE DADOS
      @staticmethod
-     def exibir_senhas(user_id):
+     def exibir_senhas(user_id : int):
             con=DB_MANAGER.db_connect()
             cursor=con.cursor()
             sql="SELECT senha_hash,url,site,descricao FROM senha WHERE user_id_FK=%s"
@@ -112,10 +111,13 @@ class DB_MANAGER:
             
             return senhas_do_usuario
      @staticmethod
-     def descrip_senha(senha):#Função auxiliar da |exibir_senhas|
+     def descrip_senha(senha : int):#Função auxiliar da |exibir_senhas|
            
         return fernet.decrypt(senha.encode()).decode() 
      
+    #FIM DAS FUNÇÕES DE IDENTIFICAÇÃO
+      
+     # FUNÇÕES DE IDENTIFICAÇÃO
      @staticmethod
      def indentify_user(email : str, senha: str) -> tuple [str , str]:
           
@@ -140,7 +142,8 @@ class DB_MANAGER:
 
      
 
-    
+
+
 
 
 
