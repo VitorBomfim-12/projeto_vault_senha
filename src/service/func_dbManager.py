@@ -8,10 +8,10 @@ import random
 from cryptography.fernet import Fernet
 
 
-
+dotenv.load_dotenv()
 chave=os.getenv('chave')
 fernet=Fernet(chave)
-dotenv.load_dotenv()
+
                
 
 class DB_MANAGER:
