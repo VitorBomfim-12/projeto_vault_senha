@@ -13,6 +13,8 @@ class LoginManager:
             senha = request.form['senha']
             hash_fijs = request.form['finger']
             tentativa_suspeita=request.form['user_session_id']
+
+            print(hash_fijs)
             
             if tentativa_suspeita:
                 return redirect(url_for('index'))
@@ -32,7 +34,7 @@ class LoginManager:
                  return (redirect(url_for('mfa')))
                
                 if status_user == 'user': return (redirect(url_for('userpage')))
-                
+
                 if status_user =='admin':# return (redirect(url_for('userpage')))
                     pass
                     #criar rota de ADM
