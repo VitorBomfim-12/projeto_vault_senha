@@ -90,6 +90,8 @@ class DB_MANAGER:
        connect.commit()
        cursor.close()
        connect.close()
+
+       return senha_6_digitos
      
         
      ### FIM DAS FUNÇÕES DE INSERÇÃO DE DADOS

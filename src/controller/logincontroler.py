@@ -1,7 +1,9 @@
 from flask import Flask, request,redirect,url_for,render_template,session
 from src.service.hash import hash_verify
 from src.service.func_dbManager import DB_MANAGER
+from src.service.email_sender import MailManager
 import bcrypt
+from projeto_vault_senha.app import mail
 
 
 class LoginManager:
@@ -32,6 +34,7 @@ class LoginManager:
                 session['user_type'] = status_user
 
                 if not hash_fijs or not hash_verify(hash_fijs) or (user_fingerprint != hash_fijs):
+                    MailManager.mail_sender(user_id)
                     return (redirect(url_for('mfa')))
                
                 if status_user == 'user': return (redirect(url_for('userpage')))
