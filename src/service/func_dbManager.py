@@ -148,6 +148,16 @@ class DB_MANAGER:
           
           if  bcrypt.check_password_hash(usuario['senha_hash'],senha) and usuario['is_admin'] == True:
               return 'admin',usuario['id'],usuario['fingerprint']
+     @staticmethod   
+     def identifica_mfa(user_id,senha_mfa):
+         con=DB_MANAGER.db_connect()
+         cur=con.cursor()
+         sql="SELECT cod_mfa FROM mfa WHERE user_id=%s"
+         cur.execute(sql,user_id)
+         senha_mfa_banco=cur.fetchone()
+         cur.close()
+         con.close()
+         return senha_mfa==senha_mfa_banco[0]
      #FIM DE FUNÇÕES DE IDENTIFICAÇÃO     
      #------------------------------------------------------------------- 
      # FUNÇÕES DE DELETE
