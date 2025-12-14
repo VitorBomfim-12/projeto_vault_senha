@@ -132,23 +132,22 @@ class DB_MANAGER:
           
           con=DB_MANAGER.db_connect()
           cursor=con.cursor()
-          sql = "SELECT email,senha_hash,is_admin FROM usuarios WHERE email = %s "
+          sql = "SELECT email,senha_hash,is_admin,fingerprint FROM usuarios WHERE email = %s "
           cursor.execute(sql,(email))
           usuario = cursor.fetchone()
           cursor.close()
           con.close()
 
-          if not usuario:
-              return False,'not in'
+          if not usuario or not bcrypt.check_password_hash(usuario['senha_hash'],senha):
+            return False
           
           if bcrypt.check_password_hash(usuario['senha_hash'],senha) and usuario['is_admin'] == False:
-              return 'user',usuario['id']
+              return 'user',usuario['id'],usuario['fingerprint']
           
           if  bcrypt.check_password_hash(usuario['senha_hash'],senha) and usuario['is_admin'] == True:
-              return 'admin',usuario['id']             
-         
+              return 'admin',usuario['id'],usuario['fingerprint']
      #FIM DE FUNÇÕES DE IDENTIFICAÇÃO     
-     #-------------------------------------------------------------------
+     #------------------------------------------------------------------- 
      # FUNÇÕES DE DELETE
      @staticmethod
      def deletar_mfa(id_user_FK : int):
