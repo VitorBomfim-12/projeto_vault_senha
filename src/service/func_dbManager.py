@@ -128,7 +128,7 @@ class DB_MANAGER:
     
      # FUNÇÕES DE IDENTIFICAÇÃO
      @staticmethod
-     def indentify_user(email : str, senha: str) -> tuple [str , str]:
+     def indentify_user(email : str, senha: str):
           
           con=DB_MANAGER.db_connect()
           cursor=con.cursor()
