@@ -1,8 +1,5 @@
 import os
 from flask import Flask
-from config import Config
-from src.controller.usercontroler import MyFlaskApp
-from src.controller.logincontroler import LoginManager
 from flask_mail import Mail
 
 
@@ -10,10 +7,26 @@ from flask_mail import Mail
 app = Flask(__name__,template_folder=os.path.join('src/view','templates'),
             static_folder=os.path.join('src/view','static'))
 
-from config import Config
-app.config.from_object(Config)
+
+
+    
+SECRET_KEY = os.getenv('SECRET_KEY')
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"   
+app.config["SESSION_USE_SIGNER"] = True 
+
+
+
+#configuração flask mail
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = os.getenv('DEL_EMAIL')
+app.config['MAIL_PASSWORD'] = os.getenv('APP_KEY')
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False 
 
 mail = Mail(app)
-if __name__ == '__main__':
-    app.run(debug=True)
+#rotas
+from src.controller.logincontroler import LoginManager
+app.add_url_rule('/','index',LoginManager.index, methods = ["GET","POST"])
 

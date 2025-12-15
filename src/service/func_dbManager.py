@@ -152,12 +152,14 @@ class DB_MANAGER:
      def identifica_mfa(user_id,senha_mfa):
          con=DB_MANAGER.db_connect()
          cur=con.cursor()
-         sql="SELECT cod_mfa FROM mfa WHERE user_id=%s"
-         cur.execute(sql,user_id)
-         senha_mfa_banco=cur.fetchone()
+         sql="SELECT cod_mfa FROM mfa WHERE user_id_FK=%s"
+         cur.execute(sql,(user_id,))
+         resultado=cur.fetchone()
+         senha_mfa_banco=resultado['cod_mfa']
+
          cur.close()
          con.close()
-         return senha_mfa==senha_mfa_banco[0]
+         return senha_mfa==senha_mfa_banco
      #FIM DE FUNÇÕES DE IDENTIFICAÇÃO     
      #------------------------------------------------------------------- 
      # FUNÇÕES DE DELETE
@@ -196,6 +198,8 @@ class DB_MANAGER:
 
 
 
+# '2', '2', '904553', '2025-12-14 20:49:19'
 
 
 
+print(DB_MANAGER.identifica_mfa(2,"904653"))

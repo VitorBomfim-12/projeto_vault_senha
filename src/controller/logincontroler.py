@@ -1,9 +1,9 @@
+from src.service.email_sender import MailManager
 from flask import Flask, request,redirect,url_for,render_template,session
 from src.service.hash import hash_verify
 from src.service.func_dbManager import DB_MANAGER
-from src.service.email_sender import MailManager
 import bcrypt
-from projeto_vault_senha.app import mail
+
 
 
 class LoginManager:

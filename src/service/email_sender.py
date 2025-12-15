@@ -1,5 +1,5 @@
+from app import mail
 import pymysql
-from projeto_vault_senha.app import mail
 from flask_mail import Message
 from src.service.func_dbManager import DB_MANAGER
 import os, dotenv
