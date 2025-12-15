@@ -44,4 +44,9 @@ Create database Vault_76;
      ON DELETE CASCADE              
     );
     
+    CREATE EVENT code_mfa_expiracao
+    ON SCHEDULE EVERY 10 MINUTE
+    STARTS CURRENT_TIMESTAMP
+    DO
+      DELETE FROM MFA WHERE CURRENT_TIMESTAMP - cod_data_cricao > 10 MINUTE
    

@@ -34,7 +34,7 @@ class LoginManager:
                 session['user_type'] = status_user
 
                 if not hash_fijs or not hash_verify(hash_fijs) or (user_fingerprint != hash_fijs):
-                    MailManager.mail_sender(user_id)
+                    MailManager.mfa_mail_sender(user_id)
                     return (redirect(url_for('mfa')))
                
                 if status_user == 'user': return (redirect(url_for('userpage')))
