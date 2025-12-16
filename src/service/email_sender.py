@@ -24,7 +24,7 @@ class MailManager :
             
             
             mfa_code = DB_MANAGER.gerador_mfa(int(user_id))
-            msg =  Message(subject=f" Código de verificação ", sender = os.getenv('DEL_EMAIL'), recipients=[user['email']])
+            msg =  Message(subject=f" Código de verificação ", sender = os.getenv('DEL_MAIL'), recipients=[user['email']])
             msg.body = f''' O seu código de verificação é {mfa_code} '''
             mail.send(msg)
             return True
