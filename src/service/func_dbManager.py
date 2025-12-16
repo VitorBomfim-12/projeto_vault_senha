@@ -178,6 +178,7 @@ class DB_MANAGER:
          con.commit()
          cursor.close()
          con.close()
+         
      @staticmethod
      def deletar_senha(id_senha : int):
          con=DB_MANAGER.db_connect()

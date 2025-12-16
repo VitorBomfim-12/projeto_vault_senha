@@ -44,4 +44,12 @@ Create database Vault_76;
      ON DELETE CASCADE              
     );
     
+    SET GLOBAL event_schedular = ON;
+    --Evento criado para deletar código de MFA expirado
+    CREATE EVENT code_mfa_expiracao
+    ON SCHEDULE EVERY 10 MINUTE
+    STARTS CURRENT_TIMESTAMP + INTERVAL 1 MINUTE
+    DO
+      DELETE FROM MFA WHERE CURRENT_TIMESTAMP - cod_data_cricao > 10 MINUTE
+    END;
    
