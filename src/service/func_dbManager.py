@@ -156,13 +156,15 @@ class DB_MANAGER:
          sql="SELECT cod_mfa FROM mfa WHERE user_id_FK=%s"
          cur.execute(sql,(user_id,))
          resultado=cur.fetchone()
-         senha_mfa_banco=resultado['cod_mfa']
-
-
          cur.close()
          con.close()
          if not resultado:
             return False
+         senha_mfa_banco=resultado['cod_mfa']
+
+
+         
+        
          
          return senha_mfa==senha_mfa_banco
      
