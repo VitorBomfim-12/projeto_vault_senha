@@ -1,4 +1,5 @@
 Create database Vault_76;  
+
           
      use Vault_76;
                    
@@ -44,17 +45,19 @@ Create database Vault_76;
      ON DELETE CASCADE              
     );
     
-    SET GLOBAL event_schedular = ON;
+   
 
 
 
-    --Evento criado para deletar código de MFA expirado
+    -- Evento criado para deletar código de MFA expirado
 
 
-    CREATE EVENT code_mfa_expiracao
-    ON SCHEDULE EVERY 10 MINUTE
-    STARTS CURRENT_TIMESTAMP + INTERVAL 1 MINUTE
-    DO
-      DELETE FROM MFA WHERE CURRENT_TIMESTAMP - cod_data_cricao > 10 MINUTE
-    END;
+   SET GLOBAL event_scheduler = ON;
+
+-- Evento criado para deletar código de MFA expirado
+CREATE EVENT IF NOT EXISTS code_mfa_expiracao
+ON SCHEDULE EVERY 10 MINUTE
+DO
+    DELETE FROM MFA 
+    WHERE cod_data_criacao < NOW() - INTERVAL 10 MINUTE;
 
