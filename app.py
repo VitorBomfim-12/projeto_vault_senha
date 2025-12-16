@@ -1,12 +1,10 @@
 import os
 from flask import Flask
-from flask_mail import Mail
 from src.extensions import mail
 from dotenv import load_dotenv
-from src.service.email_sender import MailManager
 from config import Config
-
 load_dotenv()
+
 app = Flask(__name__,template_folder=os.path.join('src/view','templates'),
             static_folder=os.path.join('src/view','static'))
 
