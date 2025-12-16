@@ -42,5 +42,6 @@ class LoginManager:
                 if status_user =='admin':# return (redirect(url_for('userpage')))
                     pass
                     #criar rota de ADM
-          
-        return render_template ('index.html')
+                    
+        if request.method == "GET":
+            return render_template ('verify.html')

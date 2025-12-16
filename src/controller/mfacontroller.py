@@ -27,7 +27,8 @@ class MfaVerify:
             if user_type == "admin": 
                 return (redirect(url_for('adminpage')))
                 
-        return render_template ('verify.html')
+        if request.method == "GET":
+            return render_template ('verify.html')
 
 
         

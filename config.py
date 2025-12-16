@@ -1,6 +1,7 @@
-import os,dotenv
+import os
 from dotenv import load_dotenv
 from datetime import timedelta
+
 class Config:
     load_dotenv()            
     #definição da secret key do app
@@ -20,4 +21,3 @@ class Config:
     MAIL_PASSWORD = os.getenv('APP_KEY')
     MAIL_USE_TLS = True
     MAIL_USE_SSL = False 
-        
