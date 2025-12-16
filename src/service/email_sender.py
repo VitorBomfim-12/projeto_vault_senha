@@ -2,7 +2,9 @@ import pymysql
 from src.extensions import mail
 from flask_mail import Message
 from src.service.func_dbManager import DB_MANAGER
-import os, dotenv
+import os
+import dotenv
+from dotenv import load_dotenv
 
 dotenv.load_dotenv()
 
