@@ -16,7 +16,7 @@ class MailManager :
         if con:    
             user_id = int(user_id)
             cur = con.cursor()
-            sql= "SELECT email FROM USUARIOS WHERE id =%s"
+            sql= "SELECT email FROM usuarios WHERE id =%s"
             cur.execute(sql,(user_id,))
             user = cur.fetchone()
             cur.close()
