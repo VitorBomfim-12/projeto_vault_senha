@@ -1,0 +1,32 @@
+
+main{
+   background-color: #EEEEEE;
+}
+
+
+.mfa-login-form{
+  text-align: left;
+  align-items: center;
+  color: antiquewhite;
+  width: 30%;
+  padding-top: 250px;
+  margin: 0 auto;
+
+} 
+
+.mfa-login-form > form{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    gap: 1rem;
+    
+
+}
+
+.mfa-login-img{
+      display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55%;
+            min-height: 100vh;
+}
