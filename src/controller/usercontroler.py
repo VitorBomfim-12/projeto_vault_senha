@@ -5,7 +5,7 @@ class UserManager:
     
     @staticmethod
     def userpage():
-        pass
+        return render_template('userpage.html')
 
 
           

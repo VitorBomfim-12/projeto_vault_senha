@@ -3,10 +3,15 @@
     {%block link%}
     <link rel="stylesheet" href="../static/mfa.css">
     {%endblock%}
-      {%block header%} <div><h3>Verificação em duas etapas.</h3></div>{%endblock%}
+      {%block header%}
+    <header class="initial-header">
+        <div><h3>Vault-76 Verificação de duas etapas</h3></div>
+        
+    </header>
+     {%endblock%}
     {%block main%}
   
-   <main class = "d-flex">
+   <main class="d-flex " >
         
     <div class = "mfa-login-form">
    
@@ -37,8 +42,12 @@
 
 
 
-       
-
+    
+     
    </main>
+
+
+    
+  
 
     {%endblock%}   
