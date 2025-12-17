@@ -13,8 +13,9 @@ mail.init_app(app)
 
 #rotas
 from src.controller.logincontroler import LoginManager
+from src.controller.mfacontroller import MfaVerify
 app.add_url_rule('/','index',LoginManager.index, methods = ["GET","POST"])
-
+app.add_url_rule('/verify','mfa',MfaVerify.mfa,methods=["GET","POST"])
 
 if __name__ == "__main__":
     app.run(debug=True)

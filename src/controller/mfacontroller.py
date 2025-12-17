@@ -1,5 +1,5 @@
 from flask import session,request,redirect,url_for,render_template
-from service.email_sender import MailManager
+from src.service.email_sender import MailManager
 from src.service.func_dbManager import DB_MANAGER
 
 
@@ -12,6 +12,8 @@ class MfaVerify:
         user_log_attempt = session.get("user_login_attempt",None)
         user_type = session.get("user_type")
 
+        if not user_log_attempt:
+            return (redirect(url_for('index')))
     
         if request.method =='POST':
 
@@ -19,7 +21,7 @@ class MfaVerify:
             attempt = DB_MANAGER.indetificar_mfa(user_log_attempt,cod_mfa)
 
             if not user_log_attempt or not user_type or not attempt: 
-                return (redirect(url_for('index'),error = 'Algo deu errado!'))
+                return (redirect(url_for('index',error = 'Algo deu errado!')))
             
             if user_type == 'user':
                 return (redirect(url_for('userpage')))

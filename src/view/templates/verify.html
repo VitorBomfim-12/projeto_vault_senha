@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+    {%block title%}{%endblock%}
+    {%block link%}
+    <link rel="stylesheet" href="../static/mfa.css">
+    {%endblock%}
+    {%block main%}
+   <main class = "d-flex">
+        
+    <div class = "mfa-login-form">
+   
+        <form action="{{url_for('mfa')}}" class="d-flex" method="POST">
+            <label for="" class="form-label">Insira o código enviado no seu email!</label>
+            <input type="text" 
+            name = "MFA"
+            class="form-control" 
+            placeholder="Código de 6 dígitos"
+            required> 
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
+            </div>
+              
+  
+        </form>
+       
+    </div>
+
+    
+    
+            <div>
+                <img src="../static/img/ChatGPT Image 14 de dez. de 2025, 02_20_07.png" width="600" alt="Vault-76 Logo">
+            </div>
+
+
+
+       
+
+   </main>
+
+    {%endblock%}   

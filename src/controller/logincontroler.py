@@ -27,7 +27,7 @@ class LoginManager:
                 
                 status_user,user_id,user_fingerprint= DB_MANAGER.indentify_user(email,senha)
 
-                if not status_user : return (redirect(url_for('index'), error='email ou senha incorretos!'))
+                if not status_user : return (redirect(url_for('index', error='email ou senha incorretos!')))
 
              
                 session['user_login_attempt'] = user_id
