@@ -104,3 +104,10 @@ body {
     border: 2px solid black;
     border-radius: 10px;
    }
+
+   footer{
+    height: 30px;
+    margin: 7px;
+    color: #b0b0b0;
+
+   }
