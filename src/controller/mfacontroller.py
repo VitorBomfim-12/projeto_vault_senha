@@ -13,7 +13,7 @@ class MfaVerify:
 
         user_log_attempt = session.get("user_login_attempt",None)
         user_type = session.get("user_type")
-
+        
        # if not user_log_attempt:
        #    return (redirect(url_for('index')))
     
@@ -25,6 +25,12 @@ class MfaVerify:
             if not user_log_attempt or not user_type or not attempt: 
                 return (redirect(url_for('index',error = 'Algo deu errado!')))
             
+            session.clear()
+
+            session['mfa_passed'] = 'True'
+            session['user_id'] = user_log_attempt
+            session['user_type'] = user_type
+
             if user_type == 'user':
                 return (redirect(url_for('userpage')))
             
