@@ -3,7 +3,9 @@
     {%block link%}
     <link rel="stylesheet" href="../static/mfa.css">
     {%endblock%}
+      {%block header%} <div><h3>Verificação em duas etapas.</h3></div>{%endblock%}
     {%block main%}
+  
    <main class = "d-flex">
         
     <div class = "mfa-login-form">
@@ -11,6 +13,8 @@
         <form action="{{url_for('mfa')}}" class="d-flex" method="POST">
             <label for="" class="form-label">Insira o código enviado no seu email!</label>
             <input type="text" 
+            inputmode="numeric"
+            maxlength="6"
             name = "MFA"
             class="form-control" 
             placeholder="Código de 6 dígitos"
@@ -27,7 +31,7 @@
 
     
     
-            <div>
+            <div class = "svg-container">
                 <img src="../static/img/ChatGPT Image 14 de dez. de 2025, 02_20_07.png" width="600" alt="Vault-76 Logo">
             </div>
 

@@ -12,8 +12,8 @@ class MfaVerify:
         user_log_attempt = session.get("user_login_attempt",None)
         user_type = session.get("user_type")
 
-        if not user_log_attempt:
-            return (redirect(url_for('index')))
+       # if not user_log_attempt:
+       #    return (redirect(url_for('index')))
     
         if request.method =='POST':
 

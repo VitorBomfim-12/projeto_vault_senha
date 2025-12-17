@@ -111,3 +111,17 @@ body {
     color: #b0b0b0;
 
    }
+
+   .initial-header{
+    display: flex;
+    flex-direction: row;
+    background-color: blue;
+    color: white;
+   
+
+   }
+   .initial-header>div{
+    margin: 10px;
+    gap: 2px;
+
+   }

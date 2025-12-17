@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%block title%}{%endblock%}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/static.css">
+    <link rel="stylesheet" href="../static/login.css">
     {%block link%}{%endblock%}
+    
 </head>
 <body>
-    
+    <header class="initial-header">
+        <div><h3>Vault-76</h3></div>
+        {%block header%} {%endblock%}
+    </header>
+
 {%block main%} {%endblock%}
      <footer>
         <div>
