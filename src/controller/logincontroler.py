@@ -34,9 +34,11 @@ class LoginManager:
                 session['user_type'] = status_user
 
                 if not hash_fijs or not hash_verify(hash_fijs) or (user_fingerprint != hash_fijs):
+                    session['mfa_passed']='False'
                     MailManager.mfa_mail_sender(user_id)
                     return (redirect(url_for('mfa')))
                
+                session['mfa_passed'] = 'True'
                 if status_user == 'user': return (redirect(url_for('userpage')))
                 
                 if status_user =='admin':# return (redirect(url_for('userpage')))

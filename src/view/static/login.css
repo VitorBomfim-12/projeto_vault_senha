@@ -29,9 +29,8 @@ main{
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 55%;
+            width: 45%;
             min-height: 100vh;
+            
         }
-        
-        
         
