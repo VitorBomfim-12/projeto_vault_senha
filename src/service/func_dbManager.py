@@ -134,19 +134,21 @@ class DB_MANAGER:
           
           con=DB_MANAGER.db_connect()
           cursor=con.cursor()
-          sql = "SELECT email,senha_hash,is_admin,fingerprint FROM usuarios WHERE email = %s "
+          sql = "SELECT id,email,senha_hash,is_adm,fingerprint FROM usuarios WHERE email = %s LIMIT 1"
           cursor.execute(sql,(email))
           usuario = cursor.fetchone()
           cursor.close()
           con.close()
+          senha_hash = usuario["senha_hash"].encode("utf-8")
+          senha = senha.encode("utf-8")
 
-          if not usuario or not bcrypt.check_password_hash(usuario['senha_hash'],senha):
-            return False
+          if not usuario or not bcrypt.checkpw(senha,senha_hash):
+            return False,None,None
           
-          if bcrypt.check_password_hash(usuario['senha_hash'],senha) and usuario['is_admin'] == False:
+          if bcrypt.checkpw(senha,senha_hash) and usuario['is_adm'] == False:
               return 'user',usuario['id'],usuario['fingerprint']
           
-          if  bcrypt.check_password_hash(usuario['senha_hash'],senha) and usuario['is_admin'] == True:
+          if  bcrypt.checkpw(senha,senha_hash) and usuario['is_adm'] == True:
               return 'admin',usuario['id'],usuario['fingerprint']
           
      @staticmethod   

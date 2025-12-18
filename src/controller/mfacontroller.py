@@ -18,7 +18,7 @@ class MfaVerify:
         if request.method =='POST':
 
             cod_mfa = request.form.get("MFA")
-            attempt = DB_MANAGER.indetifica_mfa(user_log_attempt,cod_mfa)
+            attempt = DB_MANAGER.identifica_mfa(user_log_attempt,cod_mfa)
 
             if not user_log_attempt or not user_type or not attempt: 
                 return (redirect(url_for('index',error = 'Algo deu errado!')))
