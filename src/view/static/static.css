@@ -1,6 +1,6 @@
 body {
       margin: 0;
-      min-height: 100vh; 
+      min-height: 100vh;
       overflow-y: auto;
       color: #555555;
       background-color: #EEEEEE;
@@ -8,7 +8,6 @@ body {
       
     }
 
-    
     .sidebar {
       width: 240px;
       color: #555555;
@@ -106,22 +105,16 @@ body {
    }
 
    footer{
-    height: 30px;
-    margin: 7px;
-    color: #b0b0b0;
-
-   }
-
-   .initial-header{
     display: flex;
+    justify-content: center;
     flex-direction: row;
-    background-color: blue;
-    color: white;
+    align-items: center;
+    font-weight: 900;
+    font-size: small;
+    height: 10px;
+    color: #2e2e2e;
+    margin-top:-30px;
+    gap: 1rem;
+   }
+
    
-
-   }
-   .initial-header>div{
-    margin: 10px;
-    gap: 2px;
-
-   }

@@ -6,8 +6,8 @@
       {%block header%} <div><h3>Verificação em duas etapas.</h3></div>{%endblock%}
     {%block main%}
   
-   <main class = "d-flex">
-        
+   <main >
+     <section class = "d-flex">   
     <div class = "mfa-login-form">
    
         <form action="{{url_for('mfa')}}" class="d-flex" method="POST">
@@ -29,16 +29,16 @@
        
     </div>
 
-    
-    
             <div class = "svg-container">
                 <img src="../static/img/ChatGPT Image 14 de dez. de 2025, 02_20_07.png" width="600" alt="Vault-76 Logo">
+            
             </div>
+    </section>
 
 
-
-       
-
-   </main>
+    
+   
+</main>
+  
 
     {%endblock%}   

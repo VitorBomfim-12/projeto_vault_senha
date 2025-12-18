@@ -8,7 +8,6 @@ from src.service.log_req import login_required
 class MfaVerify:
 
     @staticmethod
-    @login_required
     def mfa():
 
         user_log_attempt = session.get("user_login_attempt",None)
