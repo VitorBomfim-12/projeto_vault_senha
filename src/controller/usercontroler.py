@@ -5,8 +5,8 @@ from src.service.func_dbManager import DB_MANAGER
 class UserManager:
 
     @staticmethod
-    #@login_required
-    #@mfa_required
+    @login_required
+    @mfa_required
     def userpage():
         user = session.get('user_id')
         if request.method=="POST":
