@@ -37,10 +37,49 @@
         <input type="text" class="form-control mb-3 " placeholder="Procurar Cofre">
       </div>
 
-      <button class="btn btn-primary">+ Nova senha</button>
 
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalBasico">
+        + Nova senha
+      </button>
+
+      <form action="{{url_for('criar_senha')}}" method="POST">
+        <div class="modal fade" id="modalBasico" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Nova Senha</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <div class="modal-body d-flex flex-column gap-2 ">
+                <div>
+                <label for="Nome" class="">Nome:</label>
+                <input type="text" class="form-control" name="nome_site" placeholder="Nome do Site:" required >
+                </div>
+                <div>
+                <label for="Senha" class="">Senha:</label>
+                  <input type="text" class="form-control" placeholder="Senha" name="senha" required>
+                </div>
+                   <div>
+                <label for="Senha" class="">Url:</label>
+                  <input type="text" class="form-control" placeholder="Url-Não obrigatório" name="url">
+                </div>
+                <div>
+                  <label for="Senha" class="">Descrição:</label>
+                  <input type="text" class="form-control" placeholder="Descrição-Não obrigatório" name="descricao">
+                </div>
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
       <div class="cards-container  ">
-       
+
 
         {%for x in exibir_dados_usuario%}
         <div class="card p-2 ">
@@ -67,35 +106,41 @@
               </div>
 
               <!-- Modal body -->
-                <form action="{{url_for('userpage')}}" method="POST">
-              <div class="modal-body">
-                    <input type="hidden" name="cofre_id" value="{{ x['id_senha'] }}">
-                
-                <div class="mb-3 ">
-                  
-                  <label for="senha" class="form-label">senha:</label>
-                  <input type="text" class="form-control" name="senha" value="{{x['senha_hash']}} "
-                  data-original="{{x['senha_hash']}}" required>  
-                  <label for="site">site</label>
-                  <input type="text" class="form-control" name="site" value="{{x['site']}} "
-                  data-original="{{x['site']}}" required>  
-                  
-    
+              <form action="{{url_for('update_senha')}}" method="POST">
+                <div class="modal-body">
+                  <input type="hidden" name="cofre_id" value="{{ x['id_senha'] }}">
+
+                  <div class="mb-3 ">
+
+                    <label for="senha" class="form-label">senha:</label>
+                    <input type="text" class="form-control" name="senha" value="{{x['senha_hash']}} "
+                      data-original="{{x['senha_hash']}}" required>
+                    <label for="site">site</label>
+                    <input type="text" class="form-control" name="site" value="{{x['site']}} "
+                      data-original="{{x['site']}}" required>
+
+
+                  </div>
+
+
+
+
                 </div>
-               
 
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
+                  <button type="submit" class="btn btn-primary">Alterar</button>
 
-              </div>
-
-              <!-- Modal footer -->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-<button type="submit" class="btn btn-danger">alterar</button>
- 
-              </div>
+                </div>
               </form>
-
+              <div class="divbt  ">
+                <form action="{{url_for('deletar_senha')}}" method="POST">
+                  <input type="hidden" name="cofre_id" value="{{ x['id_senha'] }}">
+                  <button type="submit" class="btn btn-danger ">Deletar</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -105,33 +150,34 @@
     </div>
 
 
- <script>
- document.addEventListener('DOMContentLoaded', function() {
-    const todos_modal = document.querySelectorAll('.modal');
-    
-    todos_modal.forEach(function(modal) {
-        modal.addEventListener('hidden.bs.modal', function() {
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const todos_modal = document.querySelectorAll('.modal');
+
+        todos_modal.forEach(function (modal) {
+          modal.addEventListener('hidden.bs.modal', function () {
             const formulario = this.querySelector('form');
-            
+
             if (formulario) {
-                const campos = formulario.querySelectorAll('.form-control');
-                
-                campos.forEach(function(campo) {
-                    const valor_original = campo.getAttribute('data-original');
-                    campo.value = valor_original;
-                });
+              const campos = formulario.querySelectorAll('.form-control');
+
+              campos.forEach(function (campo) {
+                const valor_original = campo.getAttribute('data-original');
+                campo.value = valor_original;
+              });
             }
+          });
         });
-    });
-});
-      
-     
+      });
 
 
-</script>
+
+
+    </script>
 
 
   </main>
+  
 
 
   {%endblock%}

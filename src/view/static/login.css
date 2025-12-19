@@ -2,8 +2,9 @@
 .sidebar_login{
    
     
+    
     text-align: center;
-    width: 55%;
+    width: 50%;
     gap: 10px;
     color: #555555;
     background-color: white;
@@ -11,10 +12,12 @@
      min-height: 100vh; 
 }
 .sidebar_login>form{
+    
     font-size: larger;
     font-weight: 600;
-
-   padding-top: 100px;
+    
+    
+   padding-top: 22%;
     
 }
 

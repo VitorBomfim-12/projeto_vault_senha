@@ -119,3 +119,10 @@ body {
     font-size: medium;
 
    }
+
+.divbt{
+  display: flex;
+  margin-left: 4%;
+  width: 25%;
+  margin-top: -11%;
+}
