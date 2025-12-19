@@ -1,4 +1,4 @@
-from flask import Flask, request,redirect,url_for,render_template,jsonify
+from flask import Flask, request,redirect,url_for,render_template,jsonify,session
 from src.service.log_req import login_required,mfa_required
 from src.service.func_dbManager import DB_MANAGER
 
@@ -8,8 +8,9 @@ class UserManager:
     #@login_required
     #@mfa_required
     def userpage():
+        
         if request.method=="POST":
-
+            
             senha=request.form.get('senha',None)
             site=request.form.get('site',None)
             id_senha=request.form.get('cofre_id',None)
@@ -17,7 +18,8 @@ class UserManager:
             return redirect(url_for('userpage'))
 
         return render_template('userpage.html',exibir_dados_usuario=DB_MANAGER.exibir_senhas(1))
+    
+
 
 
           
-   
