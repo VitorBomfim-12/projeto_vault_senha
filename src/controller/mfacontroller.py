@@ -8,6 +8,7 @@ from src.service.log_req import login_required
 class MfaVerify:
 
     @staticmethod
+    @login_required
     def mfa():
 
         user_log_attempt = session.get("user_login_attempt")
@@ -23,6 +24,7 @@ class MfaVerify:
             print (user_log_attempt,user_type, attempt)
             
             if not user_log_attempt or not user_type or not attempt: 
+                DB_MANAGER.deletar_mfa(user_log_attempt)
                 return (redirect(url_for('index',error = 'Algo deu errado!')))
            
             
@@ -31,6 +33,7 @@ class MfaVerify:
             session['mfa_passed'] = 'True'
             session['user_id'] = user_log_attempt
             session['user_type'] = user_type
+            DB_MANAGER.deletar_mfa(user_log_attempt)
 
             if user_type == 'user':
                 return (redirect(url_for('userpage')))
