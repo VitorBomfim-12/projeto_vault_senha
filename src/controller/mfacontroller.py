@@ -11,7 +11,7 @@ class MfaVerify:
     @login_required
     def mfa():
 
-        user_log_attempt = session.get("user_login_attempt")
+        user_log_attempt = session.get("user_id")
         user_type = session.get("user_type")
         
        

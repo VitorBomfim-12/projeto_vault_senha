@@ -10,7 +10,7 @@ class Config:
     SESSION_PERMANENT = False
     SESSION_TYPE = "filesystem"   
     SESSION_USE_SIGNER = True
-    PERMANENT_SESSION_LIFETIME = timedelta(minutes=30)
+    PERMANENT_SESSION_LIFETIME = timedelta(minutes=2)
     SESSION_COOKIES_SECURE = True
     SESSION_COOKIE_HTTPONLY = True
 
