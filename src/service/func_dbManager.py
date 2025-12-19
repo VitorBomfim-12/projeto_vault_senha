@@ -155,7 +155,7 @@ class DB_MANAGER:
      def identifica_mfa(user_id,senha_mfa):
          con=DB_MANAGER.db_connect()
          cur=con.cursor()
-         sql="SELECT cod_mfa FROM mfa WHERE user_id_FK=%s"
+         sql="SELECT cod_mfa FROM mfa WHERE user_id_FK=%s ORDER BY id DESC LIMIT 1"
          cur.execute(sql,(user_id,))
          resultado=cur.fetchone()
          cur.close()

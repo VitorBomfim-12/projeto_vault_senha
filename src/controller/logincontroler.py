@@ -39,6 +39,7 @@ class LoginManager:
                     return (redirect(url_for('mfa')))
                
                 session['mfa_passed'] = 'True'
+                session['user_id'] = user_id
                 if status_user == 'user': return (redirect(url_for('userpage')))
                 
                 if status_user =='admin':# return (redirect(url_for('userpage')))
