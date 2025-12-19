@@ -68,7 +68,7 @@ body {
    }
     .cards-container {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap:wrap;
       gap: 1rem;
       justify-content: flex-start;
       width: 100%;
@@ -98,7 +98,11 @@ body {
 
    .card{
     display: grid;
+    width: 25%;
+    height: 30%;
+    flex-wrap: wrap;
     grid-template-columns: 1fr;
+    
     grid-column: 1/4;
     justify-content: center;
     align-items: center;

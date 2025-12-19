@@ -105,7 +105,7 @@ class DB_MANAGER:
      def exibir_senhas(user_id : int):
             con=DB_MANAGER.db_connect()
             cursor=con.cursor()
-            sql="SELECT senha_hash,url,site,descricao FROM senha WHERE user_id_FK=%s"
+            sql="SELECT id_senha,senha_hash,url,site,descricao FROM senha WHERE user_id_FK=%s ORDER BY site"
             cursor.execute(sql,(user_id,))
             senhas_do_usuario=cursor.fetchall()
             for senha in senhas_do_usuario:
@@ -202,13 +202,28 @@ class DB_MANAGER:
          con.close()
 
 
+    #função update senha ]
+     @staticmethod
+     def update_senha(id_senha,senha_hash ,url =None,descricao=None ,site=None  ):
+         definir_update={
+             'senha_hash':DB_MANAGER.criptografar_senha(senha_hash),
+             'url':url,
+             'descricao':descricao,
+             'site':site
+         }
+         tupla_update=()
+         con=DB_MANAGER.db_connect()
+         cursor=con.cursor()
+         sql="UPDATE senha SET "
+         for chave,valor in definir_update.items():
+               if valor:
+                   sql+=f"{chave}= %s,"
+                   tupla_update+=(valor,)
+         tupla_update+=(id_senha,)
+         sql=sql[:-1]+"WHERE id_senha=%s"
+         cursor.execute(sql,tupla_update)
+         con.commit()
+         cursor.close()
+         con.close()
+         
 
-
-
-
-
-# '2', '2', '904553', '2025-12-14 20:49:19'
-
-
-
-print(DB_MANAGER.identifica_mfa(2,"904653"))
