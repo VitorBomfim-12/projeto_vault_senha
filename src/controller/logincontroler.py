@@ -35,8 +35,11 @@ class LoginManager:
 
                 if not hash_fijs or not hash_verify(hash_fijs) or (user_fingerprint != hash_fijs):
                     session['mfa_passed']='False'
+
+                    session["mfa_passed"] = 'False'
                     session['user_login_attempt'] = user_id
                     MailManager.mfa_mail_sender(user_id)
+                    
                     print("MFA required")
                     return (redirect(url_for('mfa')))
                    
