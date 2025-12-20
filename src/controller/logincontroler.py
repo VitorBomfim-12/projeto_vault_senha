@@ -21,13 +21,16 @@ class LoginManager:
                 return redirect(url_for('index'))
                 
             if not email or not senha:
-                return (redirect(url_for('index'), error = "Preencha todos os campos!"))
+                session['error'] = 'Preencha todos os campos'
+                return (redirect(url_for('index')))
 
             else:
                 
                 status_user,user_id,user_fingerprint= DB_MANAGER.indentify_user(email,senha)
 
-                if not status_user : return (redirect(url_for('index', error='email ou senha incorretos!')))
+                if not status_user :
+                    session['error'] = "Usuário ou senha incorretos!"
+                    return (redirect(url_for('index')))
 
              
                 
@@ -45,6 +48,7 @@ class LoginManager:
                    
                 session['mfa_passed'] = 'True'
                 session['user_id'] = user_id
+
                 if status_user == 'user': 
                     print("user passed")
                     return (redirect(url_for('userpage')))
@@ -53,4 +57,4 @@ class LoginManager:
                     pass
                     #criar rota de ADM
         if request.method =="GET":
-            return render_template ('index.html')
+            return render_template ('index.html',error = session['error'])

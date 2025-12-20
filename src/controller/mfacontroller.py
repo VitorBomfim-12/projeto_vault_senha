@@ -24,7 +24,9 @@ class MfaVerify:
             
             if not user_log_attempt or not user_type or not attempt: 
                 DB_MANAGER.deletar_mfa(user_log_attempt)
-                return (redirect(url_for('index',error = 'Algo deu errado!')))
+                
+                session['error'] = "Algo deu errado!" 
+                return (redirect(url_for('index')))
            
             
             session.clear()
