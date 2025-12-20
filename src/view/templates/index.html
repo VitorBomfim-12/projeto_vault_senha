@@ -47,7 +47,12 @@
   
   
   <input type="hidden" name="user_session_id" id="user_session_id">
-
+{%if error%}
+      <div>
+        <span style="color: red;">{{error}}</span>
+      </div>
+      <br>
+    {%endif%}''
 
   <div class="gap-2">
     <button type="submit" class="btn btn-primary btn-lg">

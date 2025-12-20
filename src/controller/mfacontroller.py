@@ -1,13 +1,14 @@
 from flask import session,request,redirect,url_for,render_template
 from src.service.email_sender import MailManager
 from src.service.func_dbManager import DB_MANAGER
-from src.service.log_req import login_required
+from src.service.log_req import login_required,login_attempt_required
 
 
 
 class MfaVerify:
 
     @staticmethod
+    @login_attempt_required
     def mfa():
 
         user_log_attempt = session.get("user_login_attempt")
@@ -23,7 +24,8 @@ class MfaVerify:
             print (user_log_attempt,user_type, attempt)
             
             if not user_log_attempt or not user_type or not attempt: 
-                return (redirect(url_for('index',error = 'Algo deu errado!')))
+                session['error'] = "Algo deu errado!" 
+                return (redirect(url_for('index')))
            
             
             session.clear()
