@@ -34,7 +34,8 @@
       <div class="content_inline">
         <h6 class="mb-3">Filtro</h6>
 
-        <input type="text" class="form-control mb-3 " placeholder="Procurar Cofre">
+        <input type="text" class="form-control mb-3 " placeholder="Procurar Cofre" id="filtro">
+        <button  class="btn btn-dark" onclick="">Procurar</button>
       </div>
 
 
@@ -150,7 +151,11 @@
     </div>
 
 
-    <script>
+    
+
+
+  </main>
+  <script>
       document.addEventListener('DOMContentLoaded', function () {
         const todos_modal = document.querySelectorAll('.modal');
 
@@ -168,15 +173,47 @@
             }
           });
         });
-      });
 
+      
 
+      const pesquisa=document.getElementById('filtro');
+        
+       pesquisa.addEventListener('input', function() {
+        filtro(this.value.toLowerCase());
+    });
+
+       function filtro(pesquisa){
+        const allcards=document.querySelectorAll('.card');
+        let contador_cards_filtrados=0;
+        allcards.forEach(card =>{
+           const titulo =card.querySelector('h2').textContent.toLowerCase();
+           if(titulo.includes(pesquisa)){
+             card.classList.remove('hidden'); 
+              card.classList.add('filtrado')
+              contador_cards_filtrados+=1
+
+          }else{
+             card.classList.remove('filtrado'); 
+            card.classList.add('hidden')
+                
+              };
+        
+
+        });
+        if (contador_cards_filtrados===0){
+          allcards.forEach(card => {
+                card.classList.remove('hidden');
+                card.classList.remove('filtrado');
+            });
+        }
+
+      }; ;});
+      
+      
+      
 
 
     </script>
-
-
-  </main>
   
 
 
