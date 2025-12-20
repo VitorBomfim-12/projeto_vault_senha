@@ -24,6 +24,7 @@ app.add_url_rule('/about-us','about',ControlPage.about, methods=['GET'])
 app.add_url_rule('/update_senha','update_senha',UserManager.update_senha, methods=['POST'])
 app.add_url_rule('/delete','deletar_senha',UserManager.deletar_senha,methods=['POST'])
 app.add_url_rule('/criar_senha','criar_senha',UserManager.criar_senha,methods=['POST'])
+app.add_url_rule('/keygen','gerarsenha',UserManager.gerarsenha,methods=["GET","POST"])
 
 if __name__ == "__main__":
     app.run(debug=True)

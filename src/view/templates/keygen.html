@@ -1,0 +1,40 @@
+{%extends "base.html"%}
+
+{%block title%} Gerador de senhas {%endblock%}
+
+{%block link%}
+<link rel="stylesheet" href="../static/keygen.css">
+{%endblock%}
+
+{%block main%}
+
+<section>
+<div class="container-form">
+
+    <h1>Gerador de senhas</h1>
+    <h3 id = "DisplaySenha">Senha</h3>
+
+    <form action="" class="form" id = "FormGerarSenha">
+
+        <label for="NumeroDeCaracteresNumber"> Número de caracteres: </label>
+        <div>
+
+            <input type="range" min="1" max="60" id="NumeroDeCaracteresRange">
+            <input type="number" id="NumeroDeCaracteresNumber">
+        </div>
+
+        <label for="">Letras maiúsculas</label>
+        <input type="checkbox" id="Maiusculas">
+
+        <label for="">Símbolos especiais</label>
+        <input type="checkbox" id="SimEspeciais">
+
+        <label for="">Números</label>
+        <input type="checkbox" id="Números">
+
+        <button type="submit">gerar senha</button>
+    </form>
+
+</div>
+</section>
+{%endblock%}                                     

@@ -18,7 +18,7 @@ class UserManager:
     def update_senha():
         if request.method=="POST":
             
-            
+
             senha=request.form.get('senha',None)
             site=request.form.get('site',None)
             id_senha=request.form.get('cofre_id',None)
@@ -44,3 +44,10 @@ class UserManager:
             descricao=request.form.get('descricao',None)
             DB_MANAGER.inserir_senhas(senha,url,descricao,nome,user)
             return redirect(url_for('userpage'))
+ 
+
+    @staticmethod
+    def gerarsenha():
+        if request.method =="GET":
+
+            return render_template('keygen.html')

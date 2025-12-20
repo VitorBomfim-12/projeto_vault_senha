@@ -1,0 +1,18 @@
+.container-form{
+    background-color: blue;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+.form{
+    display: grid;
+    grid-template-columns:  auto auto;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
