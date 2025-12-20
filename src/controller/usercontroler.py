@@ -9,6 +9,13 @@ class UserManager:
     @mfa_required
     def userpage():
         user = session.get('user_id')
+      
+
+        return render_template('userpage.html',exibir_dados_usuario=DB_MANAGER.exibir_senhas(user))
+    @login_required
+    @mfa_required
+    @staticmethod
+    def update_senha():
         if request.method=="POST":
             
             
@@ -17,9 +24,23 @@ class UserManager:
             id_senha=request.form.get('cofre_id',None)
             DB_MANAGER.update_senha(id_senha,senha_hash=senha,site=site)
             return redirect(url_for('userpage'))
-
-        return render_template('userpage.html',exibir_dados_usuario=DB_MANAGER.exibir_senhas(user))
-
-
-          
-   
+    @login_required
+    @mfa_required
+    @staticmethod
+    def deletar_senha():
+        if request.method=="POST":
+            id_senha=request.form.get('cofre_id',None)
+            DB_MANAGER.deletar_senha(id_senha)
+            return redirect(url_for('userpage'))
+    @login_required
+    @mfa_required  
+    @staticmethod
+    def criar_senha():
+           if request.method=="POST":
+            user=session.get('user_id')
+            nome=request.form.get('nome_site')
+            senha=request.form.get('senha')
+            url=request.form.get('url',None)
+            descricao=request.form.get('descricao',None)
+            DB_MANAGER.inserir_senhas(senha,url,descricao,nome,user)
+            return redirect(url_for('userpage'))

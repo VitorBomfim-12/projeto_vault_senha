@@ -57,4 +57,4 @@ class LoginManager:
                     pass
                     #criar rota de ADM
         if request.method =="GET":
-            return render_template ('index.html',error = session['error'])
+            return render_template ('index.html',error=session.get('error', None))

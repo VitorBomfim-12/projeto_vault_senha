@@ -31,10 +31,22 @@ class DB_MANAGER:
 
 
      # INSERIR DADOS DO USUARIO PARA LOGIN
+     @staticmethod
+     def lista_email(): # função auxiliar de inserir_usuario
+        con=DB_MANAGER.db_connect()
+        cursor=con.cursor()
+        sql="SELECT email from usuarios"  
+        cursor.execute(sql)
+        listaDEemail=cursor.fetchall()
+        cursor.close()
+        con.close()
+        return [item for dicionario in listaDEemail for item in dicionario.values() ]
      
        
      @staticmethod
      def inserir_usuario(nome : str,senha_hash : str,dica : str,email : str,fingerprint : str):
+          if email in DB_MANAGER.lista_email():
+              return False
           connect=DB_MANAGER.db_connect()
           cursor=connect.cursor()
           sql="INSERT INTO usuarios(nome,senha_hash,dica,email,fingerprint) values(%s,%s,%s,%s,%s)"
@@ -228,4 +240,5 @@ class DB_MANAGER:
          cursor.close()
          con.close()
          
+
 

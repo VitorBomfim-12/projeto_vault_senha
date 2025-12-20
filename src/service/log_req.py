@@ -7,7 +7,7 @@ def login_required(f):
         if 'user_id' not in session:
             return (redirect(url_for('index')))
         return f(*args,**kwargs)
-    
+
     return decorator
 
 def mfa_required(f):
@@ -17,6 +17,15 @@ def mfa_required(f):
             return (redirect(url_for('index')))
         return f(*args,**kwargs)
     
+    return decorator
+
+def login_attempt_required(f):
+    wraps(f)
+    def decorator(*args,**kwargs):
+        if 'user_login_attempt' not in session:
+            return (redirect(url_for('index')))
+        return f(*args,**kwargs)
+
     return decorator
 
 def login_attempt_required(f):

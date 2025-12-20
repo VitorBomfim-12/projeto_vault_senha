@@ -130,4 +130,13 @@ body {
 }
 .about-us-text > h1{
   text-align: left;
+.divbt{
+  display: flex;
+  margin-left: 4%;
+  width: 25%;
+  margin-top: -11%;
+}
+
+.hidden{
+  display: none;
 }
