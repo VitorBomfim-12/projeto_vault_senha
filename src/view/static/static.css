@@ -126,3 +126,7 @@ body {
   width: 25%;
   margin-top: -11%;
 }
+
+.hidden{
+  display: none;
+}

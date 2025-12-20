@@ -35,7 +35,7 @@
         <h6 class="mb-3">Filtro</h6>
 
         <input type="text" class="form-control mb-3 " placeholder="Procurar Cofre" id="filtro">
-        <button  class="btn btn-dark" onclick="">Procurar</button>
+        
       </div>
 
 
@@ -189,12 +189,12 @@
            const titulo =card.querySelector('h2').textContent.toLowerCase();
            if(titulo.includes(pesquisa)){
              card.classList.remove('hidden'); 
-              card.classList.add('filtrado')
+              
               contador_cards_filtrados+=1
 
           }else{
-             card.classList.remove('filtrado'); 
-            card.classList.add('hidden')
+             card.classList.add('hidden'); 
+            
                 
               };
         
