@@ -21,8 +21,8 @@ class LoginManager:
                 return redirect(url_for('index'))
                 
             if not email or not senha:
-                  session['error'] = 'Preencha todos os campos'
-                  return (redirect(url_for('index')))
+                session['error'] = 'Preencha todos os campos'
+                return (redirect(url_for('index')))
 
             else:
                 
@@ -38,17 +38,21 @@ class LoginManager:
 
                 if not hash_fijs or not hash_verify(hash_fijs) or (user_fingerprint != hash_fijs):
                     session['mfa_passed']='False'
+
+                    session["mfa_passed"] = 'False'
                     session['user_login_attempt'] = user_id
                     MailManager.mfa_mail_sender(user_id)
+                    
                     print("MFA required")
                     return (redirect(url_for('mfa')))
-               
+                   
                 session['mfa_passed'] = 'True'
                 session['user_id'] = user_id
+
                 if status_user == 'user': 
                     print("user passed")
                     return (redirect(url_for('userpage')))
-                
+                    
                 if status_user =='admin':# return (redirect(url_for('userpage')))
                     pass
                     #criar rota de ADM

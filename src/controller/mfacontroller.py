@@ -21,9 +21,10 @@ class MfaVerify:
             cod_mfa = request.form.get("MFA")
             attempt = DB_MANAGER.identifica_mfa(user_log_attempt,cod_mfa)
 
-            print (user_log_attempt,user_type, attempt)
             
             if not user_log_attempt or not user_type or not attempt: 
+                DB_MANAGER.deletar_mfa(user_log_attempt)
+                
                 session['error'] = "Algo deu errado!" 
                 return (redirect(url_for('index')))
            
@@ -33,6 +34,7 @@ class MfaVerify:
             session['mfa_passed'] = 'True'
             session['user_id'] = user_log_attempt
             session['user_type'] = user_type
+            DB_MANAGER.deletar_mfa(user_log_attempt)
 
             if user_type == 'user':
                 return (redirect(url_for('userpage')))

@@ -120,6 +120,16 @@ body {
 
    }
 
+.about-us-text{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+  padding-right: 30px;
+}
+.about-us-text > h1{
+  text-align: left;
 .divbt{
   display: flex;
   margin-left: 4%;

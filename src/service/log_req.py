@@ -16,6 +16,15 @@ def mfa_required(f):
         if session['mfa_passed']=='False':
             return (redirect(url_for('index')))
         return f(*args,**kwargs)
+    
+    return decorator
+
+def login_attempt_required(f):
+    wraps(f)
+    def decorator(*args,**kwargs):
+        if 'user_login_attempt' not in session:
+            return (redirect(url_for('index')))
+        return f(*args,**kwargs)
 
     return decorator
 
