@@ -1,7 +1,7 @@
 from flask import Flask, request,redirect,url_for,render_template,jsonify, session
 from src.service.log_req import login_required,mfa_required
 from src.service.func_dbManager import DB_MANAGER
-
+from src.service.keygen import password_gen
 class UserManager:
 
     @staticmethod
@@ -49,5 +49,18 @@ class UserManager:
     @staticmethod
     def gerarsenha():
         if request.method =="GET":
-
             return render_template('keygen.html')
+    
+    @staticmethod
+    def passwordgen():
+        if request.method=="POST":
+            parametros = request.get_json()
+            maiusculas = parametros.get("maiusculas")
+            numeros = parametros.get("numeros")
+            simbolos = parametros.get("simbolos")
+            tamanho = parametros.get("tamanho")
+
+            password = password_gen(maiusculas,simbolos,numeros,tamanho)
+            password_json = {"valor":password}
+            return jsonify(password_json)
+                

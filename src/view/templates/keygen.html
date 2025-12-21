@@ -19,8 +19,7 @@
         <label for="NumeroDeCaracteresNumber"> Número de caracteres: </label>
         <div>
 
-            <input type="range" min="1" max="60" id="NumeroDeCaracteresRange">
-            <input type="number" id="NumeroDeCaracteresNumber">
+            <input type="range" min="10" max="60" id="NumeroDeCaracteresRange">
         </div>
 
         <label for="">Letras maiúsculas</label>
@@ -30,11 +29,47 @@
         <input type="checkbox" id="SimEspeciais">
 
         <label for="">Números</label>
-        <input type="checkbox" id="Números">
+        <input type="checkbox" id="Numeros">
 
-        <button type="submit">gerar senha</button>
+        <button type="button" id = "SubmitButton">gerar senha</button>
     </form>
 
 </div>
 </section>
+<script>
+    const maiusculas = document.getElementById('Maiusculas')
+    const numeros = document.getElementById('Numeros')
+    const simbolos = document.getElementById('SimEspeciais')
+    const tamanho = document.getElementById('NumeroDeCaracteresRange')
+    const SubmitButton = document.getElementById('SubmitButton')
+    const PasswordDisplay = document.getElementById('DisplaySenha')
+
+    SubmitButton.addEventListener('click', async ()=> {
+    const maius = maiusculas.checked; 
+    const num = numeros.checked;
+    const sim = simbolos.checked;
+    const tam = tamanho.value;
+
+        try{
+           
+
+            const response = await fetch('/passwordgen', {
+                method : "POST",
+                headers: {
+                    'Content-Type': 'application/json' // Avisamos que estamos enviando JSON
+                },
+                body:JSON.stringify({ maiusculas: maius, numeros : num,
+                    simbolos:sim, tamanho : tam
+                })
+
+
+            });
+            const senha = await response.json();
+            
+            PasswordDisplay.innerText = senha.valor;
+        }catch(error){
+            console.log("erro ao conectar a API")
+        }
+    });
+</script>
 {%endblock%}                                     
