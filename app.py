@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from src.extensions import mail
+from src.service.extensions import mail
 from dotenv import load_dotenv
 from config import Config
 load_dotenv()

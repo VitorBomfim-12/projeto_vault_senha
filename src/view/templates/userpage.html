@@ -1,4 +1,4 @@
-{% extends 'base.html'%}
+{% extends 'base_templates/userpage_base.html'%}
 
 
 {% block title%} Cofres {%endblock%}
@@ -10,20 +10,10 @@
 
 
 {%block main%}
-<div class="d-flex h-100 ">
 
 
-  <div class="sidebar p-3 bg-primary">
-    <h5 class="mb-4"><img src="../../../img_readme/ChatGPT Image 14 de dez. de 2025, 02_20_07.png" width="54" alt="">
-      Vault-76</h5>
 
-    <ul class="nav flex-column gap-2">
-      <li><a class="p-2 d-block rounded" href="#"><i class="bi bi-lock"></i>Cofres</a></li>
-      <li><a class="p-2 d-block rounded" href="{{url_for('gerarsenha')}}"><i class="bi bg-info"></i>Gerador de senhas</a></li>
-    </ul>
-  </div>
-
-
+  
 
 
   <main class="main">
@@ -149,17 +139,6 @@
         {%endfor%}
       </div>
     </div>
-
-
-     <footer class="footer mt-auto py-3 bg-light">
-    <div class="container text-center">
-      <span class="text-muted">
-        © 2024 Vault-76 - Todos os direitos Reservados
-      </span>
-    </div>
-  </footer>
-
-
   </main>
    
 </div>
