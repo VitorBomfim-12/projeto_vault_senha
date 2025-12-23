@@ -18,7 +18,7 @@ class DB_MANAGER:
      #CONECTAR AO BANCO SQL
      @staticmethod
      def db_connect():
-       connection = pymysql.connect(host=os.getenv("MYSQL_HOST"),
+       connection = pymysql.connect(host='localhost',
                                  user='root',
                                  password=os.getenv("DB_password"),
                                  database='Vault_76',
