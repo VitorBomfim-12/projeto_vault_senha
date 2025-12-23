@@ -5,6 +5,10 @@ body {
       color: #555555;
       background-color: #EEEEEE;
       height: 100%;
+
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased; /* Deixa a fonte mais nítida em sistemas Mac/Linux */
+    -moz-osx-font-smoothing: grayscale;
        
       
     }

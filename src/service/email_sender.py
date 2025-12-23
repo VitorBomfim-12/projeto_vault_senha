@@ -1,5 +1,5 @@
 import pymysql
-from src.extensions import mail
+from src.service.extensions.mail_ext import mail
 from flask_mail import Message
 from src.service.func_dbManager import DB_MANAGER
 import os
