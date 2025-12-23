@@ -1,10 +1,10 @@
-Create database Vault_76;  
+Create database if NOT EXISTS Vault_76;  
 
           
      use Vault_76;
                    
    -- Tabela usuário 
-    CREATE TABLE usuarios(
+    CREATE TABLE IF NOT EXISTS usuarios (
     id int primary key auto_increment,-- Chave que serve de FK para as duas outras tabelas
     nome varchar(50) not null, -- username do usuário
     senha_hash varchar(100) not null,-- Armazena hash da senha
@@ -15,13 +15,13 @@ Create database Vault_76;
     
             );
     -- TABELA DO TIME DE SEGURANÇA
-    CREATE TABLE security_team( 
+    CREATE TABLE IF NOT EXISTS security_team ( 
      id int auto_increment primary key,-- id do membro do time de segurança
      nome varchar(50) not null, -- nome do membro
      email varchar(100) not null-- recebera email sobre vazamento de senha por esse email
     );
     -- TABELA de senha
-    CREATE TABLE senha(
+    CREATE TABLE IF NOT EXISTS senha (
     id_senha int primary key auto_increment, -- Id proprio dessa tabela
     senha_hash varchar(100) not null, -- Senhas armazenadas do usuário
     url varchar(250),-- Url do site da senha cadastrada
@@ -36,7 +36,7 @@ Create database Vault_76;
                    
                    );
      -- TABELA de mfa
-    CREATE TABLE mfa(
+    CREATE TABLE IF NOT EXISTS mfa  (
     id int primary key auto_increment,-- id proprio da tabela
     user_id_FK int not null,-- chave estrangeira do id de usuarios
     cod_mfa varchar(255) not null, -- codigo temporario para verificação de 2 fatores
@@ -55,7 +55,7 @@ Create database Vault_76;
    SET GLOBAL event_scheduler = ON;
 
 -- Evento criado para deletar código de MFA expirado
-CREATE EVENT IF NOT EXISTS code_mfa_expiracao
+CREATE EVENT IF NOT EXISTS code_mfa_expiracao 
 ON SCHEDULE EVERY 10 MINUTE
 DO
     DELETE FROM MFA 
