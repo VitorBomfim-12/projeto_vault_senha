@@ -110,6 +110,7 @@ body {
    }
 
    footer{
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,6 +118,9 @@ body {
     gap: 10px;
     font-weight: 900;
     font-size: medium;
+
+    
+   
 
    }
 
