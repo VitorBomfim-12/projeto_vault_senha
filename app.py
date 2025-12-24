@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from src.service.extensions.mail_ext import mail
+from src.service.extensions.session import session
 from dotenv import load_dotenv
 from config import Config
 load_dotenv()
@@ -10,6 +11,7 @@ app = Flask(__name__,template_folder=os.path.join('src/view','templates'),
 
 app.config.from_object(Config)
 mail.init_app(app)
+session.init_app(app)
 
 #rotas
 from src.controller.logincontroler import LoginManager
