@@ -31,7 +31,7 @@ class MfaVerify:
             session.clear()
 
             session.permanent=True
-            session['mfa_passed'] = 'True'
+            session['mfa_passed'] = True
             session['user_id'] = user_log_attempt
             session['user_type'] = user_type
 

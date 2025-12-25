@@ -13,7 +13,7 @@ def login_required(f):
 def mfa_required(f):
     wraps(f)
     def decorator(*args,**kwargs):
-        if session['mfa_passed']=='False':
+        if session['mfa_passed']==False:
             return (redirect(url_for('index')))
         return f(*args,**kwargs)
 
