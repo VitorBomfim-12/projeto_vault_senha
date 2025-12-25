@@ -1,51 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%block title%}{%endblock%}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/static.css">
-    <link rel="stylesheet" href="../static/login.css">
-    <link rel="stylesheet" href="../static/mfa.css">
-<script 
-src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    {%block link%}{%endblock%}
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{%block title%}{%endblock%}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/static.css">
+  <link rel="stylesheet" href="../static/login.css">
+  <link rel="stylesheet" href="../static/mfa.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  {%block link%}{%endblock%}
+
 </head>
+
 <body>
 
-    <div class="d-flex h-100 ">
+  <div class="d-flex h-100 " style="margin: 0;">
 
 
-  <div class="sidebar p-3" style="background-color:  #122c51;">
-    <h5 class="mb-4"><img src="../../../img_readme/ChatGPT Image 14 de dez. de 2025, 02_20_07.png" width="54" alt="">
-      Vault-76</h5>
+    <div class="sidebar p-3" style="background-color:  #122c51; height:100vh;">
+      <h5 class="mb-4"><img src="../../../img_readme/ChatGPT Image 14 de dez. de 2025, 02_20_07.png" width="54" alt="">
+        Vault-76</h5>
 
-    <ul class="nav flex-column gap-2">
-      <li><a class="p-2 d-block rounded" href="{{url_for('userpage')}}"><i class="bi bi-lock"></i>Cofres</a></li>
-      <li><a class="p-2 d-block rounded" href="{{url_for('gerarsenha')}}"><i class="bi bg-info"></i>Gerador de senhas</a></li>
-    </ul>
-  </div>
-{%block main%} 
+      <ul class="nav flex-column gap-2">
+        <li><a class="p-2 d-block rounded" href="{{url_for('userpage')}}"><i class="bi bi-lock"></i>Cofres</a></li>
+        <li><a class="p-2 d-block rounded" href=""><i class="bi bg-info"></i>Gerador de
+            ajuda</a></li>
+        <li><a class="p-2 d-block rounded" href="{{url_for('gerarsenha')}}"><i class="bi bg-info"></i>Gerador de
+            senhas</a></li>
+      
+      </ul>
 
 
-{%endblock%}
 
-     <footer class="footer  py-2 bg-light">
-    <div class="container text-center">
-      <span class="text-muted">
-        © 2024 Vault-76 - Todos os direitos Reservados
-      </span>
+
+      <ul class="nav flex-column gap-2" style="padding-top: 50vh;">
+        <li><a class="p-2 d-block rounded" style="color: red;" href="{{url_for('logout')}}">
+          <i class="bi bg-info"></i>Sair</a></li>
+        
+        <li><a class="p-2 d-block rounded" href="{{url_for('about')}}">
+          <i class="bi bg-info"></i>Sobre</a></li>
+        
+      </ul>
     </div>
-  </footer>
+    {%block main%}
 
-    
-    
-    
-  
+
+    {%endblock%}
+
+    <footer class="footer  py-2 bg-light">
+      <div class="container text-center">
+        <span class="text-muted">
+          © 2024 Vault-76 - Todos os direitos Reservados
+        </span>
+      </div>
+    </footer>
+
+
+
+
+
 
 </html>
