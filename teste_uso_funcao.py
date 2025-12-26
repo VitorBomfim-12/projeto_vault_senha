@@ -9,10 +9,7 @@ cur.execute(sql)
 senhas_banco = cur.fetchall()
 
 for senhas in senhas_banco:
-   
-   print (dm.descrip_senha(senhas['senha_hash']))
-   print (type(senhas['senha_hash']))
-   print ((senhas['senha_hash']))
-   print (vsa(senhas['senha_hash']))
-
+   print(dm.descrip_senha(senhas['senha_hash']))
+   print(vsa(senhas['senha_hash']))
+   print(f'\n')
 
