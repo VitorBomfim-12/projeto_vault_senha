@@ -13,3 +13,4 @@ for senhas in senhas_banco:
    print(vsa(senhas['senha_hash']))
    print(f'\n')
 
+print (vsa('senha123',True))

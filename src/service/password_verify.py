@@ -1,10 +1,12 @@
 import requests,hashlib
 from src.service.func_dbManager import DB_MANAGER as dm
 
-def verifica_senha_api(senha:str) -> bool:
+def verifica_senha_api(senha:str,metodo=False) -> bool:
     
-    senha_descripto = dm.descrip_senha(senha)
-
+    if not metodo:
+        senha_descripto = dm.descrip_senha(senha)
+    else:
+        senha_descripto =  senha
     # criação de um objeto SHA-1, transformando a string "senha_descripto" em bytes,
     #que são aceitos em algorítmos de criptografia 
     senha_hash_objeto = hashlib.sha1(senha_descripto.encode('utf-8'))
@@ -29,7 +31,7 @@ def verifica_senha_api(senha:str) -> bool:
 
     for linha in resposta_linhas:
 
-        sufixo_api, contagem = linha.split(':')
+        sufixo_api,contagem= linha.split(':')
         if sufixo_api == sufix_senha:
             return True
 

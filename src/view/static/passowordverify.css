@@ -1,0 +1,25 @@
+.container-form{
+   margin-top: 15%;
+   
+    background-color:#79716b ;
+    border-color: #dcdcdc;
+    border-radius: 15px;
+    color:rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+    min-height: 50vh;
+    max-height: 60vh;
+    
+    flex-direction: column;
+}
+
+.form{
+    display: flex;
+   flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
