@@ -23,7 +23,7 @@ Create database if NOT EXISTS Vault_76;
     -- TABELA de senha
     CREATE TABLE IF NOT EXISTS senha (
     id_senha int primary key auto_increment, -- Id proprio dessa tabela
-    senha_hash varchar(100) not null, -- Senhas armazenadas do usuário
+    senha_hash varchar(250) not null, -- Senhas armazenadas do usuário
     url varchar(250),-- Url do site da senha cadastrada
     descricao varchar(100),-- descricao da senha adicionada
     site varchar(100),-- nome do site da senha adicionada
