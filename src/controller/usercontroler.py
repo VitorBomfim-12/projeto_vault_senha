@@ -2,6 +2,8 @@ from flask import Flask, request,redirect,url_for,render_template,jsonify, sessi
 from src.service.log_req import login_required,mfa_required
 from src.service.func_dbManager import DB_MANAGER
 from src.service.keygen import password_gen
+from src.service.password_verify import verifica_senha_api as verify_password_func
+
 class UserManager:
 
     @staticmethod
@@ -47,6 +49,8 @@ class UserManager:
  
 
     @staticmethod
+    @login_required
+    @mfa_required
     def gerarsenha():
         if request.method =="GET":
             return render_template('keygen.html')
@@ -63,4 +67,24 @@ class UserManager:
             password = password_gen(maiusculas,simbolos,numeros,tamanho)
             password_json = {"valor":password}
             return jsonify(password_json)
+    
+    @login_required
+    @mfa_required
+    @staticmethod
+    def passwordverifypage():
+        if request.method =="GET":
+            return render_template('password-verify.html')
+        
+    @staticmethod
+    def password_verify_api():
+        if request.method =="POST":
+            password_json = request.get_json()
+            senha = password_json.get('senha')
+            verify_pass_response =verify_password_func(senha,True)
+            print (verify_pass_response)
+            print(senha)
+
+            response_pass_json = {"response":verify_pass_response}
+            return jsonify(response_pass_json)
+            
                 

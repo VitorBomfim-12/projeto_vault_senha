@@ -1,4 +1,4 @@
-import os
+import os, redis
 from dotenv import load_dotenv
 from datetime import timedelta
 
@@ -8,11 +8,12 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY')
     #configuração dos parâmetros das sessions
     SESSION_PERMANENT = False
-    SESSION_TYPE = "filesystem"   
+    SESSION_TYPE = "redis"   
     SESSION_USE_SIGNER = True
-    PERMANENT_SESSION_LIFETIME = timedelta(minutes=1000)
+    SESSION_REDIS = redis.from_url('redis://127.0.0.1:6379')
     SESSION_COOKIES_SECURE = True
     SESSION_COOKIE_HTTPONLY = True
+    PERMANENT_SESSION_LIFETIME = timedelta(minutes=10)
 
     #configuração flask mail
     MAIL_SERVER='smtp.gmail.com'
