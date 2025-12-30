@@ -16,13 +16,16 @@ class Db_Update:
        return connection
      
     @staticmethod
-    def update_seg_senha(user_id : int, id_senha = None) -> None:
+    def update_seg_senha(user_id : int, id_senha = 0) -> int:
         id_senha = int(id_senha)
         con = Db_Update.db_connect()
         cur = con.cursor()
         sql = "SELECT id_senha,senha_hash FROM senha"
-        alteracao=False
+        alteracao,cont_senhas_vazadas=False,0
 
+
+        #Inserção de dinamicidade na função, quando recebe o user_id, a função deve verificar
+        #todas as senhas, quando recebe o id_senha, deve verificar somente uma senha
         if id_senha:
             sql_sufix=' WHERE id_senha = %s'
             sql+= sql_sufix
@@ -45,6 +48,7 @@ class Db_Update:
                 sql='UPDATE senha SET senha_segura =%s WHERE id_senha = %s'
                 print (db.descrip_senha(senha['senha_hash']))
                 cur.execute(sql,(0,senha['id_senha']))
+                cont_senhas_vazadas+=1
             else:
                 alteracao = True
                 sql='UPDATE senha SET senha_segura =%s WHERE id_senha = %s'
@@ -57,4 +61,5 @@ class Db_Update:
 
         cur.close()
         con.close()
+        return cont_senhas_vazadas
          
