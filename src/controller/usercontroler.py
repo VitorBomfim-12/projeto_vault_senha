@@ -1,6 +1,7 @@
 from flask import Flask, request,redirect,url_for,render_template,jsonify, session
 from src.service.log_req import login_required,mfa_required
 from src.service.func_dbManager import DB_MANAGER
+from src.service.db_sec_update import Db_Update as db_update
 from src.service.keygen import password_gen
 from src.service.password_verify import verifica_senha_api as verify_password_func
 
@@ -14,6 +15,7 @@ class UserManager:
         
        
         if 'exibir_dados_usuario' not in session:
+            db_update.update_seg_senha(user)
             session['exibir_dados_usuario'] = DB_MANAGER.exibir_senhas(user)
         return render_template('userpage.html')
 
@@ -31,6 +33,7 @@ class UserManager:
 
             user = session.get('user_id')
             session.pop('exibir_dados_usuario')
+            db_update.update_seg_senha(user)
             session['exibir_dados_usuario'] = DB_MANAGER.exibir_senhas(user)
             return redirect(url_for('userpage'))
         
@@ -45,6 +48,7 @@ class UserManager:
 
             user = session.get('user_id')
             session.pop('exibir_dados_usuario')
+            db_update.update_seg_senha(user)
             session['exibir_dados_usuario'] = DB_MANAGER.exibir_senhas(user)
             return redirect(url_for('userpage'))
     @login_required
@@ -62,6 +66,7 @@ class UserManager:
 
             user = session.get('user_id')
             session.pop('exibir_dados_usuario')
+            db_update.update_seg_senha(user)
             session['exibir_dados_usuario'] = DB_MANAGER.exibir_senhas(user)
 
             

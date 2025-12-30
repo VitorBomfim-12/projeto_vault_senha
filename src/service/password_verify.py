@@ -31,7 +31,7 @@ def verifica_senha_api(senha:str,metodo=False) -> bool:
 
     for linha in resposta_linhas:
 
-        sufixo_api,contagem= linha.split(':')
+        sufixo_api,contagem = linha.split(':')
         if sufixo_api == sufix_senha:
             return True
 

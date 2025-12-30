@@ -79,6 +79,14 @@
             <div class="d-flex justify-content-center flex-column p-2">
               <p>{{x['descricao']}}</p>
               <p>{{x['url']}}</p>
+
+              {%if x['senha_segura'] == 1%}
+              <span>Senha segura</span>
+              {%endif%}
+
+              {%if x['senha_segura'] == 0%}
+              <span>Senha perigosa!</span>
+              {%endif%}
             </div>
           </div>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{loop.index0}}">
