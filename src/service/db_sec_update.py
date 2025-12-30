@@ -16,12 +16,26 @@ class Db_Update:
        return connection
      
     @staticmethod
-    def update_seg_senha(user_id):
-        alteracao=False
+    def update_seg_senha(user_id : int, id_senha = None) -> None:
+        id_senha = int(id_senha)
         con = Db_Update.db_connect()
         cur = con.cursor()
-        sql = "SELECT id_senha,senha_hash FROM senha WHERE user_id_FK = %s"
-        cur.execute(sql,(user_id,))
+        sql = "SELECT id_senha,senha_hash FROM senha"
+        alteracao=False
+
+        if id_senha:
+            sql_sufix=' WHERE id_senha = %s'
+            sql+= sql_sufix
+            print(sql)
+            cur.execute(sql,(id_senha,))
+            print("Alteração unica feita com db_sec!")
+        else:
+            sql_sufix = " WHERE user_id_FK = %s"
+            sql+=sql_sufix
+            cur.execute(sql,(user_id,))
+            print("Alteração múltipla feita com db_sec!")
+
+        
         senhas_usuario = cur.fetchall()
         for senha in senhas_usuario:
             status_senha = verify_pass(senha['senha_hash'],False)

@@ -33,7 +33,7 @@ class UserManager:
 
             user = session.get('user_id')
             session.pop('exibir_dados_usuario')
-            db_update.update_seg_senha(user)
+            db_update.update_seg_senha(user,id_senha)
             session['exibir_dados_usuario'] = DB_MANAGER.exibir_senhas(user)
             return redirect(url_for('userpage'))
         
