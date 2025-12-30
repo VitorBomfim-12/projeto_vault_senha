@@ -28,12 +28,12 @@ class Db_Update:
             sql+= sql_sufix
             print(sql)
             cur.execute(sql,(id_senha,))
-            print("Alteração unica feita com db_sec!")
+        
         else:
             sql_sufix = " WHERE user_id_FK = %s"
             sql+=sql_sufix
             cur.execute(sql,(user_id,))
-            print("Alteração múltipla feita com db_sec!")
+            
 
         
         senhas_usuario = cur.fetchall()
@@ -48,7 +48,6 @@ class Db_Update:
             else:
                 alteracao = True
                 sql='UPDATE senha SET senha_segura =%s WHERE id_senha = %s'
-                print (db.descrip_senha(senha['senha_hash']))
                 cur.execute(sql,(1,senha['id_senha']))
                
 
