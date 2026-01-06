@@ -184,7 +184,7 @@
         const allcards=document.querySelectorAll('.card');
         let contador_cards_filtrados=0;
         allcards.forEach(card =>{
-           const titulo =card.querySelector('h2').textContent.toLowerCase();
+           const titulo =card.querySelector('h3').textContent.toLowerCase();
            if(titulo.includes(pesquisa)){
              card.classList.remove('hidden'); 
               
