@@ -1,6 +1,7 @@
 from flask import Flask, request,redirect,url_for,render_template,jsonify, session
 from src.service.log_req import login_required,mfa_required
 from src.service.func_dbManager import DB_MANAGER
+from src.service.db_sec_update import Db_Update as db_update
 from src.service.keygen import password_gen
 from src.service.password_verify import verifica_senha_api as verify_password_func
 
@@ -11,21 +12,31 @@ class UserManager:
     @mfa_required
     def userpage():
         user = session.get('user_id')
-      
+        
+       
+        if 'exibir_dados_usuario' not in session:
+            db_update.update_seg_senha(user)
+            session['exibir_dados_usuario'] = DB_MANAGER.exibir_senhas(user)
+        return render_template('userpage.html')
 
-        return render_template('userpage.html',exibir_dados_usuario=DB_MANAGER.exibir_senhas(user))
     @login_required
     @mfa_required
     @staticmethod
     def update_senha():
         if request.method=="POST":
             
-
+            
             senha=request.form.get('senha',None)
             site=request.form.get('site',None)
             id_senha=request.form.get('cofre_id',None)
             DB_MANAGER.update_senha(id_senha,senha_hash=senha,site=site)
+
+            user = session.get('user_id')
+            session.pop('exibir_dados_usuario')
+            db_update.update_seg_senha(user,id_senha)
+            session['exibir_dados_usuario'] = DB_MANAGER.exibir_senhas(user)
             return redirect(url_for('userpage'))
+        
     @login_required
     @mfa_required
     @staticmethod
@@ -33,6 +44,12 @@ class UserManager:
         if request.method=="POST":
             id_senha=request.form.get('cofre_id',None)
             DB_MANAGER.deletar_senha(id_senha)
+
+
+            user = session.get('user_id')
+            session.pop('exibir_dados_usuario')
+            db_update.update_seg_senha(user)
+            session['exibir_dados_usuario'] = DB_MANAGER.exibir_senhas(user)
             return redirect(url_for('userpage'))
     @login_required
     @mfa_required  
@@ -45,6 +62,14 @@ class UserManager:
             url=request.form.get('url',None)
             descricao=request.form.get('descricao',None)
             DB_MANAGER.inserir_senhas(senha,url,descricao,nome,user)
+
+
+            user = session.get('user_id')
+            session.pop('exibir_dados_usuario')
+            db_update.update_seg_senha(user)
+            session['exibir_dados_usuario'] = DB_MANAGER.exibir_senhas(user)
+
+            
             return redirect(url_for('userpage'))
  
 

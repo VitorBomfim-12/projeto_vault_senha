@@ -72,13 +72,24 @@
       <div class="cards-container  ">
 
 
-        {%for x in exibir_dados_usuario%}
+        {%for x in session['exibir_dados_usuario']%}
         <div class="card p-2 ">
           <div>
-            <h2>{{x['site']}}</h2>
+            <div>
+            {%if x['senha_segura'] == 1%}
+             <h3><span class="badge rounded-pill bg-success">{{x['site']}}</span></h3>
+              {%endif%}
+
+              {%if x['senha_segura'] == 0%}
+               <h3><span class="badge rounded-pill bg-danger">{{x['site']}}</span></h3>
+              {%endif%}
+            </div>
+            
             <div class="d-flex justify-content-center flex-column p-2">
               <p>{{x['descricao']}}</p>
               <p>{{x['url']}}</p>
+
+              
             </div>
           </div>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{loop.index0}}">
@@ -173,7 +184,7 @@
         const allcards=document.querySelectorAll('.card');
         let contador_cards_filtrados=0;
         allcards.forEach(card =>{
-           const titulo =card.querySelector('h2').textContent.toLowerCase();
+           const titulo =card.querySelector('h3').textContent.toLowerCase();
            if(titulo.includes(pesquisa)){
              card.classList.remove('hidden'); 
               

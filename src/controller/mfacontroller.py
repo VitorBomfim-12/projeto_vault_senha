@@ -21,7 +21,7 @@ class MfaVerify:
             cod_mfa = request.form.get("MFA")
             attempt = DB_MANAGER.identifica_mfa(user_log_attempt,cod_mfa)
 
-            print (user_log_attempt,user_type, attempt)
+        
             
             if not user_log_attempt or not user_type or not attempt: 
                 session['error'] = "Algo deu errado!" 

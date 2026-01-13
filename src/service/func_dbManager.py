@@ -7,6 +7,7 @@ import random
 from cryptography.fernet import Fernet
 
 
+
 load_dotenv()
 chave=os.getenv('chave')
 fernet=Fernet(chave)
@@ -117,7 +118,7 @@ class DB_MANAGER:
      def exibir_senhas(user_id : int):
             con=DB_MANAGER.db_connect()
             cursor=con.cursor()
-            sql="SELECT id_senha,senha_hash,url,site,descricao FROM senha WHERE user_id_FK=%s ORDER BY site"
+            sql="SELECT id_senha,senha_hash,url,site,descricao,senha_segura FROM senha WHERE user_id_FK=%s ORDER BY site"
             cursor.execute(sql,(user_id,))
             senhas_do_usuario=cursor.fetchall()
             for senha in senhas_do_usuario:
@@ -240,5 +241,5 @@ class DB_MANAGER:
          cursor.close()
          con.close()
          
-
+    
 

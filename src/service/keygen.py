@@ -39,4 +39,4 @@ def password_gen(maiusculas:bool, simbolos :bool, numeros : bool, tamanho:int) -
         if qualidade_senha:
             return caracteres_escolhidos
         
-print(password_gen(True,True,True,12))
+
