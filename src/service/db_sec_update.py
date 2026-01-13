@@ -57,7 +57,7 @@ class Db_Update:
 
         if alteracao:     
          con.commit()
-         print("alteração de segurança feita!")
+         
 
         cur.close()
         con.close()
