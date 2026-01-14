@@ -1,14 +1,20 @@
 import os
+from flask_cors import CORS
+from flask_restx import Api, Resource
 from flask import Flask
 from src.service.extensions.mail_ext import mail
 from src.service.extensions.session import session
 from dotenv import load_dotenv
 from config import Config
+from flask import jsonify
+from src.controller.usercontroler import user_ns
 load_dotenv()
 
 app = Flask(__name__,template_folder=os.path.join('src/view','templates'),
             static_folder=os.path.join('src/view','static'))
-
+CORS(app)
+api = Api(app, title="Vault API", doc='/docs')
+api.add_namespace(user_ns)
 app.config.from_object(Config)
 mail.init_app(app)
 session.init_app(app)
@@ -31,6 +37,10 @@ app.add_url_rule('/keygen','gerarsenha',UserManager.gerarsenha,methods=["GET","P
 app.add_url_rule("/passwordgen",'passwordgen', UserManager.passwordgen, methods=["POST"])
 app.add_url_rule('/passwordverifypage','passwordverifypage',UserManager.passwordverifypage,methods=["GET","POST"])
 app.add_url_rule('/passwordverify','password_verify_api',UserManager.password_verify_api,methods=['POST'])
+
+@app.route('/api/hello')
+def hello():
+    return jsonify({"message": "Olá do Flask! A conexão com o React funcionou."})
 
 
 app.add_url_rule("/logout",'logout',logout,methods=['GET','POST'])

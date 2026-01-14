@@ -242,4 +242,3 @@ class DB_MANAGER:
          con.close()
          
     
-
