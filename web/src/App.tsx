@@ -22,8 +22,8 @@ function App() {
       if (response.ok && isLogin) {
         alert("Login realizado! Vá para o dashboard mocréia");
       }
-    } catch (err) {
-      setMensagem('Erro ao conectar com o servidor.')
+    } catch {
+      setMensagem('Erro ao conectar com o servidor.');
     }
     setEmail('');
     setSenha('');
