@@ -22,6 +22,9 @@ def temp_pass_identify(user_id):
         sql = "SELECT senha_temp FROM usuarios WHERE id = %s"
         cur.execute(sql,user_id)
         status_senha = cur.fetchone()
+        cur.close()
+        con.close()
+        
         if status_senha['senha_temp'] == True:
             return True
         return False

@@ -37,7 +37,7 @@ class MfaVerify:
             session['user_type'] = user_type
 
             if temp_pass :
-                return (redirect(url_for('passchange')))
+                return (redirect(url_for('passchangepage')))
             if user_type == 'user':
                 return (redirect(url_for('userpage')))
             
