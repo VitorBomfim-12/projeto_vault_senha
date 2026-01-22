@@ -2,6 +2,7 @@ from flask import session,request,redirect,url_for,render_template
 from src.service.email_sender import MailManager
 from src.service.func_dbManager import DB_MANAGER
 from src.service.log_req import login_required,login_attempt_required
+from src.service.temp_pass import  temp_pass_identify as temp_pass
 
 
 
@@ -35,6 +36,8 @@ class MfaVerify:
             session['user_id'] = user_log_attempt
             session['user_type'] = user_type
 
+            if temp_pass :
+                return (redirect(url_for('passchange')))
             if user_type == 'user':
                 return (redirect(url_for('userpage')))
             
