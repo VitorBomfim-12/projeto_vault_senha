@@ -30,14 +30,15 @@ class MfaVerify:
            
             
             session.clear()
-
+            if temp_pass :
+                return (redirect(url_for('passchange')))
+            
             session.permanent=True
             session['mfa_passed'] = True
             session['user_id'] = user_log_attempt
             session['user_type'] = user_type
 
-            if temp_pass :
-                return (redirect(url_for('passchangepage')))
+           
             if user_type == 'user':
                 return (redirect(url_for('userpage')))
             

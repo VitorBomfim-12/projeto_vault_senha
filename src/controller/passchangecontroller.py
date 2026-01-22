@@ -1,6 +1,6 @@
 from flask import Flask, request,redirect,url_for,render_template,session
 from src.service.password_verify import verifica_senha_api as vsa
-from src.service.
+from src.service.db_pass_update import DbPassUpdate as dbu
 
 
 class PassChange:
@@ -13,7 +13,9 @@ class PassChange:
         
         if vsa(str(new_pass), True):
             session['error'] = "A senha não é segura! tente umas mais forte."
-        
+
+        user_id = session.get('user_login_attempt')
+        dbu.passoword_db_change(new_pass,user_id)
 
         
 
