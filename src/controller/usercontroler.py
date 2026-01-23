@@ -1,4 +1,4 @@
-from flask import Flask, request,redirect,url_for,render_template,jsonify, session
+from flask import request,redirect,url_for,render_template,jsonify, session
 from src.service.log_req import login_required,mfa_required
 from src.service.func_dbManager import DB_MANAGER
 from src.service.db_sec_update import Db_Update as db_update

@@ -1,7 +1,6 @@
 from flask import session,request,redirect,url_for,render_template
-from src.service.email_sender import MailManager
 from src.service.func_dbManager import DB_MANAGER
-from src.service.log_req import login_required,login_attempt_required
+from src.service.log_req import login_attempt_required
 from src.service.temp_pass import  temp_pass_identify as temp_pass
 
 
@@ -29,10 +28,10 @@ class MfaVerify:
                 return (redirect(url_for('index')))
            
             
-            session.clear()
             if temp_pass :
                 return (redirect(url_for('passchange')))
             
+            session.clear()
             session.permanent=True
             session['mfa_passed'] = True
             session['user_id'] = user_log_attempt

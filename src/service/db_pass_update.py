@@ -24,4 +24,6 @@ class DbPassUpdate:
         cur.execute(sql,(new_pass_hashed,user_id))
         cur.close()
         con.close()
+
+        return True
      
