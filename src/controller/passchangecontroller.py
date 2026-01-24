@@ -5,15 +5,18 @@ from src.service.db_pass_update import DbPassUpdate as dbu
 
 class PassChange:
 
+    @staticmethod
     def pass_change():
         if request.method == "POST":
             new_pass = request.form.get("new-pass")
             new_pass_confirm = request.form.get("new-pass-confirm")
             if new_pass != new_pass_confirm:
                 session['error'] = "As senhas não são iguais!"
+                return (redirect(url_for('pass_change')))
             
             if vsa(str(new_pass), True):
                 session['error'] = "A senha não é segura! tente umas mais forte."
+                return (redirect(url_for('pass_change')))
 
             user_type = session.get("user_type")
             user_id = session.get('user_login_attempt')
@@ -32,6 +35,10 @@ class PassChange:
             
             if user_type == "admin": 
                 return (redirect(url_for('adminpage')))
+            
+            
+        if request.method=="GET":
+            return render_template("passchangepase.html")
             
 
         

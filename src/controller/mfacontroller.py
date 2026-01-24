@@ -29,7 +29,7 @@ class MfaVerify:
            
             
             if temp_pass :
-                return (redirect(url_for('passchange')))
+                return (redirect(url_for('pass_change')))
             
             session.clear()
             session.permanent=True

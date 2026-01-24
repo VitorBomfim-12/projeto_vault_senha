@@ -20,8 +20,8 @@ class DbPassUpdate:
         new_pass_hashed = dbm.hash_da_senha(new_pass)
         con = DbPassUpdate.db_connect()
         cur = con.cursor()
-        sql = "UPDATE usuarios SET senha_hash = %s WHERE id = %s"
-        cur.execute(sql,(new_pass_hashed,user_id))
+        sql = "UPDATE usuarios SET senha_hash = %s senha_temp = %s WHERE id = %s"
+        cur.execute(sql,(new_pass_hashed,True,user_id))
         cur.close()
         con.close()
 
