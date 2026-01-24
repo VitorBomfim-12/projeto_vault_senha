@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+    {%block title%}Troca de senha{%endblock%}
+    {%block link%}
+    
+    {%endblock%}
+     
+    {%block main%}
+  
+   <main >
+     <section class = "d-flex">   
+    <div class = "mfa-login-form">
+   
+        <form action="{{url_for('pass_change')}}" class="d-flex" method="POST">
+            <label for="" class="form-label">Insira a nova senha!</label>
+            <input type="text" 
+            name = "new_pass"
+            class="form-control" 
+            placeholder="Nova senha"
+            required> 
+
+            <label for="" class="form-label">Insira a nova senha!</label>
+            <input type="text" 
+            name = "new_pass_confirm"
+            class="form-control" 
+            placeholder="Insira a mesma senha"
+            required> 
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">Atualizar senha</button>
+            </div>
+              
+  
+        </form>
+    {%if error%}
+      <div>
+        <span style="color: red;">{{error}}</span>
+      </div>
+      <br>
+    {%endif%}
+       
+    </div>
+
+            <div class = "svg-container">
+                <img src="../static/img/ChatGPT Image 14 de dez. de 2025, 02_20_07.png" width="600" alt="Vault-76 Logo">
+            
+            </div>
+    </section>
+
+
+
+    
+     
+   </main>
+
+
+    
+  
+
+    {%endblock%}   

@@ -8,7 +8,7 @@ Create database if NOT EXISTS Vault_76;
     id int primary key auto_increment,-- Chave que serve de FK para as duas outras tabelas
     nome varchar(50) not null, -- username do usuário
     senha_hash varchar(100) not null,-- Armazena hash da senha
-    senha_temp BOOLEAN (100) not null, --Categoriza se a senha é temporária ou não
+    senha_temp BOOLEAN (100) not null DEFAULT TRUE, --Categoriza se a senha é temporária ou não
     dica varchar(30),-- Dica sobre chave mestra(principal) do usuário
     email varchar(100) not null,-- Email do usuário no Vault 74
     fingerprint varchar(100), -- Identificação do pc do usuário

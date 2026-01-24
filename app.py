@@ -19,6 +19,7 @@ from src.controller.mfacontroller import MfaVerify
 from src.controller.usercontroler import UserManager
 from src.controller.aboutcontroller import ControlPage
 from src.service.logout import logout
+from src.controller.passchangecontroller import PassChange
 
 app.add_url_rule('/','index',LoginManager.index, methods = ["GET","POST"])
 app.add_url_rule('/verify','mfa',MfaVerify.mfa,methods=["GET","POST"])
@@ -31,7 +32,7 @@ app.add_url_rule('/keygen','gerarsenha',UserManager.gerarsenha,methods=["GET","P
 app.add_url_rule("/passwordgen",'passwordgen', UserManager.passwordgen, methods=["POST"])
 app.add_url_rule('/passwordverifypage','passwordverifypage',UserManager.passwordverifypage,methods=["GET","POST"])
 app.add_url_rule('/passwordverify','password_verify_api',UserManager.password_verify_api,methods=['POST'])
-
+app.add_url_rule("/pass_change","pass_change",PassChange.pass_change,methods=['POST','GET'])
 
 app.add_url_rule("/logout",'logout',logout,methods=['GET','POST'])
 if __name__ == "__main__":

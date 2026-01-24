@@ -16,14 +16,13 @@ class DbPassUpdate:
        return connection
     
     @staticmethod
-    def passoword_db_change(user_id,new_pass):
-        new_pass_hashed = dbm.hash_da_senha(new_pass)
+    def passoword_db_change(new_pass,user_id):
+        new_pass_hashed = dbm.hash_da_senha(str(new_pass))
         con = DbPassUpdate.db_connect()
         cur = con.cursor()
-        sql = "UPDATE usuarios SET senha_hash = %s senha_temp = %s WHERE id = %s"
-        cur.execute(sql,(new_pass_hashed,True,user_id))
+        sql = "UPDATE usuarios SET senha_hash = %s, senha_temp = %s WHERE id = %s"
+        cur.execute(sql,(new_pass_hashed,False,user_id))
+        con.commit()
         cur.close()
         con.close()
-
-        return True
      

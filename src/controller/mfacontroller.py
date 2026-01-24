@@ -28,7 +28,7 @@ class MfaVerify:
                 return (redirect(url_for('index')))
            
             
-            if temp_pass :
+            if temp_pass(user_log_attempt) :
                 return (redirect(url_for('pass_change')))
             
             session.clear()
