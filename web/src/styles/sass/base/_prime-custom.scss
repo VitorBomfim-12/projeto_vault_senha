@@ -1,0 +1,49 @@
+.p-component {
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+.p-icon, .pi {
+    font-size: 1.6rem; 
+    vertical-align: middle;
+    line-height: 1.5; 
+}
+
+.p-component, .p-component * {
+    box-sizing: border-box;
+}
+
+// BUTTON OVERRIDE
+
+.p-button {
+    background: $primary;
+    border: 1px solid $primary;
+    color: $surface-1000;
+
+    &:not(:disabled):hover {
+        background: $primary-dark;
+        border-color: $primary-dark;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px $primary, 0 1px 2px 0 rgb(0, 0, 0);
+    }
+
+    &-secondary {
+        background-color: $surface-1000;
+        border: 1px solid $surface-1000;
+        color: $surface-100;
+
+        &:not(:disabled):hover {
+            background: $surface-900;
+            border-color: $surface-900;
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px $surface-1000, 0 1px 2px 0 rgb(0, 0, 0);
+        }
+
+    }
+
+}
+

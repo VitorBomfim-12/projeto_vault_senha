@@ -1,0 +1,40 @@
+
+.logo {
+    height: 4rem;
+}
+
+.sidebar {
+    width: 15%;
+    background-color: $surface-1000;
+    color: $surface-550;
+    border-top-right-radius: 1.6rem;
+    border-bottom-right-radius: 1.6rem;
+    padding: 1rem 2rem;
+ 
+
+
+    overflow: hidden;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+   
+        position: relative;
+
+        & .p-button-secondary {
+            color: $surface-800;
+        }
+
+        &::after {
+            content: "";
+            width: 150%;
+            height: 1px;
+            background-color: $surface-900;
+            bottom: 0;
+            left: -3rem;
+            position: absolute;
+        }
+    }
+}
