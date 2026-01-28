@@ -1,4 +1,7 @@
 function VaultPage() {
+    
+
+
     return (
         <>
             <h1>Cofre</h1>

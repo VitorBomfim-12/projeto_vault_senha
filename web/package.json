@@ -11,6 +11,7 @@
     "compile:sass": "sass src/styles/sass/main.scss src/styles/css/style.css -w"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.7",
     "react": "^19.2.0",

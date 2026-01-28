@@ -2,7 +2,7 @@
 
 $primary: #ffd218;
 $primary-dark: #fbc113;
-$primary-light: #ffd22f;
+$primary-light: #ffd744;
 
 $green-local: #44D091;
 $green-dark: #5EDEA5;
@@ -42,3 +42,6 @@ $body-color: $surface-50;
 $default-font-size: 1.6rem;
 $noto-family: "Noto Sans", sans-serif;
 $lexend-family: "Lexend Deca", sans-serif;
+
+//HELPERS
+$transition-default: all .2s ease;

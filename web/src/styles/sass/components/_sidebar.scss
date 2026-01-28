@@ -4,13 +4,21 @@
 }
 
 .sidebar {
-    width: 15%;
+    width: 17%;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
     background-color: $surface-1000;
     color: $surface-550;
     border-top-right-radius: 1.6rem;
     border-bottom-right-radius: 1.6rem;
-    padding: 1rem 2rem;
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
  
+    & a {
+        text-decoration: none;
+    }
 
 
     overflow: hidden;
@@ -20,12 +28,9 @@
         align-items: center;
         justify-content: space-between;
         padding-bottom: 1rem;
+        height: 6rem;
    
         position: relative;
-
-        & .p-button-secondary {
-            color: $surface-800;
-        }
 
         &::after {
             content: "";
@@ -37,4 +42,189 @@
             position: absolute;
         }
     }
+
+    &__button {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        font-size: 2.8rem;
+        color: $surface-850;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        transition: $transition-default;
+
+        &:hover {
+            color: $surface-800;
+            
+        }
+
+        &--new {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: transparent;
+            
+            border: none;
+            outline: none;
+            font-size: 1.5rem;
+            color: $primary;
+            cursor: pointer;
+            position: relative;
+            padding-left: .5rem;
+            padding-bottom: 1.5rem;
+            transition: $transition-default;
+
+            & i {
+                border-radius: 50%;
+                background-color: $primary;
+                padding: .8rem;
+                color: $surface-1000;
+            }
+
+            & span {
+                white-space: nowrap;
+                opacity: 1;
+                transition: opacity 0.2s ease;
+            }
+
+            &::after {
+                content: "";
+                width: 300%;
+                height: 1px;
+                background-color: $surface-900;
+                bottom: 0;
+                left: -3rem;
+                position: absolute;
+            }
+
+            &:hover {
+                padding-left: 1rem;
+            }
+        }
+       
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1.5rem 0;
+        height: 75%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+     
+        & li {
+            background-color: transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: $transition-default;
+
+            &:has(.active):hover {
+                padding-left: 0; 
+            }
+
+            & .active {
+                background-color: $surface-850;
+                color: $surface-100;
+            }
+
+            & i {
+                font-size: 1.8rem;
+            }
+            
+            & a {
+                border-radius: 5px;
+                padding: 1.3rem 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: .8rem;
+                color: $surface-550;
+            }
+
+            &:hover {
+                background-color: $surface-850;
+                padding-left: .5rem;
+                
+                & a {
+                    color: $surface-100;
+                }
+            }
+        }
+
+        & .item-4 {
+            margin-top: auto;
+        }
+
+       
+
+    }
+
+    &--closed {
+        width: 4.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        & li:hover {
+            padding-left: 0;
+        }
+
+        & .sidebar__button--new:hover {
+            padding-left: .5rem;
+        }
+       
+
+        & .sidebar__button--new i:hover {
+            background-color: $primary-light;
+        }
+
+        & .sidebar__copyright {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    &--open {
+        border: none;
+        border-radius: 50%;
+       
+        padding: 1rem;
+        font-size: 2rem;
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+        background-color: $surface-900;
+        color: $primary;
+        transition: $transition-default;
+    
+        &:hover {
+            background-color: $surface-850;
+            color: $primary-light;
+        }
+    }
+
+    &__copyright {
+        color: $surface-700;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+    }
+
+    &__nav-name {
+        white-space: nowrap;
+        opacity: 1;
+        visibility: visible;
+
+        .sidebar--closed & {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.1s ease 0.2s, visibility 0s 0.3s;
+        }
+
+    }
+
 }
