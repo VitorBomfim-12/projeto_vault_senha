@@ -2,10 +2,13 @@ import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import type { Dispatch, SetStateAction } from "react";
 import CustomInputGroup from "../components/CustomInputGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function ModalSenha({isNewPasswordVisible, setIsNewPasswordVisible}: {isNewPasswordVisible: boolean, setIsNewPasswordVisible:Dispatch<SetStateAction<boolean>>}) {
+    const navigation = useNavigate();
+
+
     const headerContent =(
         <div className="modal__header">
             <span >Criar Nova Senha</span>
@@ -14,7 +17,7 @@ function ModalSenha({isNewPasswordVisible, setIsNewPasswordVisible}: {isNewPassw
 
     const footerContent = (
         <div className="modal__footer">
-            <Button label="Fechar" text onClick={() => setIsNewPasswordVisible(false)} className="p-button-text" />
+            <Button label="Fechar" text onClick={() => {setIsNewPasswordVisible(false); navigation(-1)}} className="p-button-text" />
             <Button label="Salvar" icon="pi pi-save" autoFocus />
         </div>
     );
@@ -23,7 +26,7 @@ function ModalSenha({isNewPasswordVisible, setIsNewPasswordVisible}: {isNewPassw
     return (
         <>
             {/* <Button label="Show" icon="pi pi-external-link" onClick={() => setIsNewPasswordVisible(true)} /> */}
-            <Dialog className="modal" modal header={headerContent} footer={footerContent} draggable={false} resizable={false} visible={isNewPasswordVisible} style={{ width: '35vw', left: '10rem' }} onHide={() => {if (!isNewPasswordVisible) return; setIsNewPasswordVisible(false); }}>
+            <Dialog className="modal" modal header={headerContent} footer={footerContent} draggable={false} resizable={false} visible={isNewPasswordVisible} style={{ width: '35vw', left: '10rem' }} onHide={() => {if (!isNewPasswordVisible) return; setIsNewPasswordVisible(false); navigation(-1) }}>
                 <div className="modal__content">
                     <p>Os itens com (*) são considerados obrigatórios para a criação do item.</p>
                     <CustomInputGroup label="Nome da Plataforma *" placeholder="Digite o Nome da Plataforma..." />

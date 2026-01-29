@@ -23,7 +23,7 @@ function CustomInputGroup({label, placeholder, message, type = 'text'}: {label: 
             <label className="input-group__label" htmlFor="">{label}</label>
             {renderInput(type)}
             
-            <p>{message}</p>
+            {message}
         </div>
     )
 }

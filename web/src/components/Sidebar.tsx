@@ -18,7 +18,17 @@ function Sidebar({isOpen, setIsOpen, setIsNewPasswordVisible, location}: {isOpen
                 
             </div>
             
-            <Link to="/nova-senha" state={{ backgroundLocation: location }} onClick={()=>setIsNewPasswordVisible(true)}><button className="sidebar__button--new"><i className='bx  bx-plus'></i><span className="sidebar__nav-name">Nova Senha</span></button></Link>
+            <Link
+                to="/nova-senha" 
+                state={{ backgroundLocation: location }} 
+                onClick={()=>{
+                    setIsNewPasswordVisible(true);
+                    sessionStorage.setItem('modal_background', location.pathname);
+                }}
+            >
+                <button className="sidebar__button--new">
+                <i className='bx  bx-plus'></i><span className="sidebar__nav-name">Nova Senha</span></button>
+            </Link>
             <ul className="sidebar__list">
                 <li><NavLink to="/"><i className='bx  bx-lock'></i> <span className="sidebar__nav-name">Cofre</span></NavLink></li>
                 <li><NavLink to="/gerador-senhas"><i className='bx  bx-copy-plus'></i><span className="sidebar__nav-name">Gerador de Senhas</span></NavLink></li>
