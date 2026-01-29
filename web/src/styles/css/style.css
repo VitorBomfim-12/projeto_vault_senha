@@ -370,6 +370,52 @@ body {
   font-weight: 600;
 }
 
+.not-found {
+  background-color: #FFFFFF;
+  width: 30vw;
+  height: 60vh;
+  margin: auto;
+  border-radius: 0.8rem;
+  border: 1px solid #DCE0E5;
+  display: flex;
+}
+.not-found__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.not-found__header h1 {
+  font-size: 6rem;
+  font-family: "Lexend Deca", sans-serif;
+}
+.not-found__header h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.not-found__logo {
+  height: 16rem;
+}
+.not-found__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width: 85%;
+  margin: auto;
+}
+.not-found__footer {
+  margin-top: auto;
+  display: flex;
+  gap: 2rem;
+}
+.not-found p {
+  text-align: center;
+  color: #8F8F9A;
+}
+
 .main {
   display: flex;
   width: 100%;
@@ -394,6 +440,10 @@ body {
   height: 100%;
   width: 90%;
   margin: auto;
+}
+.content--not-found {
+  height: 100vh;
+  display: flex;
 }
 
 h1 {

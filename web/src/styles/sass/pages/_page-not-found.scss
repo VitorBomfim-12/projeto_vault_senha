@@ -1,0 +1,52 @@
+.not-found {
+    background-color: $surface-0;
+    width: 30vw;
+    height: 60vh;
+    margin: auto;
+    border-radius: .8rem;
+    border: 1px solid $surface-100;
+    display: flex;
+
+    &__header {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 3rem;
+        & h1 {
+            font-size: 6rem;
+            font-family: $lexend-family;
+        }
+        & h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+    }
+
+    &__logo {
+        height: 16rem;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+        width: 85%;
+        margin: auto;
+        
+    }
+
+    &__footer {
+        margin-top: auto;
+        display: flex;
+        gap: 2rem;
+    }
+
+    & p {
+        text-align: center;
+        color: $surface-500;
+    }
+
+}
