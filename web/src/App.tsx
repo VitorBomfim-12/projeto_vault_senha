@@ -40,7 +40,7 @@ function App() {
     <>
       <Routes location={background || location}>
         <Route path="/" element={<DefaultLayout isOpen={isOpen} setIsOpen={setIsOpen}  setIsNewPasswordVisible = {setIsNewPasswordVisible} location={location} />}>
-          <Route index path="/" element={<VaultPage/>} />
+          <Route index path="/" element={<VaultPage location={location} setIsNewPasswordVisible={setIsNewPasswordVisible}  />} />
           <Route path="gerador-senhas" element={<GenPasswordPage />} />
           <Route path="verificador-senhas" element={<VerifyPasswordPage />} />
           <Route path="sobre" element={<AboutPage />} />

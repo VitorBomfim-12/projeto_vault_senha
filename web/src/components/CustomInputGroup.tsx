@@ -10,7 +10,7 @@ function CustomInputGroup({label, placeholder, message, type = 'text'}: {label: 
             case 'text':
                 return <InputText placeholder={placeholder} />;
             case 'password': 
-                return <Password placeholder={placeholder} feedback={false} toggleMask />
+                return <Password placeholder={placeholder}  feedback={false} toggleMask />
             case 'textArea':
                 return <InputTextarea placeholder={placeholder} rows={3} cols={30} aria-placeholder={placeholder} />
             default: 

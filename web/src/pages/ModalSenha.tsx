@@ -5,6 +5,7 @@ import CustomInputGroup from "../components/CustomInputGroup";
 import { Link, useNavigate } from "react-router-dom";
 
 
+
 function ModalSenha({isNewPasswordVisible, setIsNewPasswordVisible}: {isNewPasswordVisible: boolean, setIsNewPasswordVisible:Dispatch<SetStateAction<boolean>>}) {
     const navigation = useNavigate();
 

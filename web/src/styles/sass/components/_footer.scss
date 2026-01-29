@@ -1,0 +1,16 @@
+.footer {
+    width: 100%;
+    margin: auto;
+    transition: $transition-default;
+    position: absolute;
+    bottom: 0;
+
+    & p {
+        color: $surface-700;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+}

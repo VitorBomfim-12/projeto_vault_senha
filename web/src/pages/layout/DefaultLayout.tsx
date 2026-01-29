@@ -8,6 +8,7 @@ function DefaultLayout({isOpen, setIsOpen, setIsNewPasswordVisible, location}: {
     return (
         <main className="main">
             <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} setIsNewPasswordVisible = {setIsNewPasswordVisible} location = {location} />
+            <div className="pseudoHeader"></div>
             <section className="page">
                 <Header />
                 <div className="content">
