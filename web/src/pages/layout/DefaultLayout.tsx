@@ -3,10 +3,10 @@ import Sidebar from "../../components/Sidebar"
 import type { Dispatch, SetStateAction } from "react"
 import Header from "../../components/Header"
 
-function DefaultLayout({isOpen, setIsOpen}: {isOpen: boolean,setIsOpen:Dispatch<SetStateAction<boolean>>}) {
+function DefaultLayout({isOpen, setIsOpen, setIsNewPasswordVisible}: {isOpen: boolean,setIsOpen:Dispatch<SetStateAction<boolean>>,setIsNewPasswordVisible:Dispatch<SetStateAction<boolean>>}) {
     return (
         <main className="main">
-            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} setIsNewPasswordVisible = {setIsNewPasswordVisible} />
             <section className="page">
                 <Header />
                 <div className="content">

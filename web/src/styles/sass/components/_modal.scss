@@ -1,0 +1,32 @@
+.modal {
+    &__header {
+        width: 90%;
+        margin: auto;
+        margin-top: 1rem;
+        font-size: 1.6rem;
+    }
+
+    & p {
+        color: $surface-300 !important;
+    }
+
+    & a {
+        color: $primary;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: auto;
+    }
+    
+    &__footer {
+        display: flex;
+        gap: 2rem;
+        justify-content: flex-end;
+        padding-top: 1.5rem;
+        width: 90%;
+        margin: auto;
+    }
+}

@@ -14,7 +14,6 @@ html {
 
 body {
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   background-color: #EFF3F6;
@@ -34,6 +33,18 @@ body {
 
 .p-component, .p-component * {
   box-sizing: border-box;
+}
+
+.p-dialog-header {
+  border-bottom: 1px solid #DCE0E5;
+}
+
+.p-dialog-content {
+  padding-top: 1.6rem;
+}
+
+.p-dialog-footer {
+  border-top: 1px solid #DCE0E5;
 }
 
 .p-button {
@@ -59,6 +70,47 @@ body {
 }
 .p-button-secondary:focus {
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #191C1E, 0 1px 2px 0 rgb(0, 0, 0);
+}
+.p-button-text {
+  background-color: transparent;
+  color: #ffd218;
+  border-color: transparent;
+}
+.p-button-text:not(:disabled):hover {
+  background-color: rgba(255, 210, 24, 0.2);
+  border-color: transparent;
+}
+
+.p-inputtext {
+  color: #4b5563;
+  border: 1px solid #BCBCC2;
+}
+.p-inputtext::placeholder {
+  color: #A5A5AF;
+}
+.p-inputtext:enabled:hover {
+  border-color: #ffd218;
+}
+.p-inputtext:enabled:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 210, 24, 0.2) !important;
+  border-color: #ffd218;
+}
+
+.p-password, .p-password-input {
+  width: 100%;
+  display: block;
+}
+
+.p-icon-field > .p-input-icon {
+  margin-top: -1rem;
+}
+
+.p-password-show-icon {
+  font-size: 1.6rem !important;
+  color: #8F8F9A;
+}
+.p-password-show-icon:hover {
+  color: #ffd218;
 }
 
 .logo {
@@ -279,6 +331,43 @@ body {
   white-space: nowrap;
   transition: all 0.3s ease;
   text-align: center;
+}
+
+.modal__header {
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+  font-size: 1.6rem;
+}
+.modal p {
+  color: #BCBCC2 !important;
+}
+.modal a {
+  color: #ffd218;
+}
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+.modal__footer {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-end;
+  padding-top: 1.5rem;
+  width: 90%;
+  margin: auto;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.input-group__label {
+  font-weight: 600;
 }
 
 .main {
