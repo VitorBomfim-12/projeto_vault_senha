@@ -5,7 +5,28 @@
     background-color: $body-color;
 }
 
-.content {
+.page {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-image: url(/config-vault-76.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60vh;
+    overflow: hidden;
+    min-height: 0;
+    position: relative;
 }
 
+.content {
+    height: 100%;
+    width: 90%;
+    margin: auto;
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: $surface-850;
+    font-family: $lexend-family;
+}

@@ -69,6 +69,7 @@ body {
   width: 17%;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  font-size: 1.5rem;
   background-color: #191C1E;
   color: #808589;
   border-top-right-radius: 1.6rem;
@@ -94,7 +95,7 @@ body {
 }
 .sidebar__header::after {
   content: "";
-  width: 150%;
+  width: 300%;
   height: 1px;
   background-color: #24282E;
   bottom: 0;
@@ -210,8 +211,12 @@ body {
 .sidebar--closed .sidebar__button--new:hover {
   padding-left: 0.5rem;
 }
+.sidebar--closed .sidebar__button--new i {
+  transition: all 0.2s ease;
+}
 .sidebar--closed .sidebar__button--new i:hover {
   background-color: #ffd744;
+  transform: scale(1.05);
 }
 .sidebar--closed .sidebar__copyright {
   opacity: 0;
@@ -232,6 +237,7 @@ body {
 .sidebar--open:hover {
   background-color: #30343B;
   color: #ffd744;
+  transform: scale(1.05);
 }
 .sidebar__copyright {
   color: #4D5258;
@@ -251,6 +257,30 @@ body {
   transition: opacity 0.1s ease 0.2s, visibility 0s 0.3s;
 }
 
+.header {
+  width: 120%;
+  margin-left: -10rem;
+  height: 8.8rem;
+  background-color: #FFFFFF;
+  margin-bottom: 2.5rem;
+}
+
+.footer {
+  width: 100%;
+  margin: auto;
+  transition: all 0.2s ease;
+  position: absolute;
+  bottom: 0;
+}
+.footer p {
+  color: #4D5258;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
 .main {
   display: flex;
   width: 100%;
@@ -258,8 +288,30 @@ body {
   background-color: #EFF3F6;
 }
 
-.content {
+.page {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-image: url(/config-vault-76.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60vh;
+  overflow: hidden;
+  min-height: 0;
+  position: relative;
+}
+
+.content {
+  height: 100%;
+  width: 90%;
+  margin: auto;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #30343B;
+  font-family: "Lexend Deca", sans-serif;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -7,6 +7,7 @@
     width: 17%;
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    font-size: 1.5rem;
     background-color: $surface-1000;
     color: $surface-550;
     border-top-right-radius: 1.6rem;
@@ -34,7 +35,7 @@
 
         &::after {
             content: "";
-            width: 150%;
+            width: 300%;
             height: 1px;
             background-color: $surface-900;
             bottom: 0;
@@ -175,10 +176,14 @@
         & .sidebar__button--new:hover {
             padding-left: .5rem;
         }
-       
+        
+        & .sidebar__button--new i {
+            transition: $transition-default;
+        }
 
         & .sidebar__button--new i:hover {
             background-color: $primary-light;
+            transform: scale(1.05);
         }
 
         & .sidebar__copyright {
@@ -199,10 +204,12 @@
         background-color: $surface-900;
         color: $primary;
         transition: $transition-default;
+        
     
         &:hover {
             background-color: $surface-850;
             color: $primary-light;
+            transform: scale(1.05);
         }
     }
 

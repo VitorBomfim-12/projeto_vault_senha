@@ -1,0 +1,24 @@
+.header {
+    width: 120%;
+    margin-left: -10rem;
+    height: 8.8rem;
+    background-color: $surface-0;
+    margin-bottom: 2.5rem;
+}
+
+.footer {
+    width: 100%;
+    margin: auto;
+    transition: $transition-default;
+    position: absolute;
+    bottom: 0;
+
+    & p {
+        color: $surface-700;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+}
