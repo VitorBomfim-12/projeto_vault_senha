@@ -2,10 +2,10 @@ import { Link, NavLink } from "react-router-dom"
 import Logo from "./Logo"
 import classNames from "classnames"
 import type { Dispatch, SetStateAction } from "react"
+import type { Location } from "react-router-dom";
 
 
-
-function Sidebar({isOpen, setIsOpen, setIsNewPasswordVisible}: {isOpen: boolean,setIsOpen:Dispatch<SetStateAction<boolean>>, setIsNewPasswordVisible:Dispatch<SetStateAction<boolean>>}) {
+function Sidebar({isOpen, setIsOpen, setIsNewPasswordVisible, location}: {isOpen: boolean,setIsOpen:Dispatch<SetStateAction<boolean>>, setIsNewPasswordVisible:Dispatch<SetStateAction<boolean>>, location: Location}) {
     return (
         <aside className={classNames("sidebar", {"sidebar--closed": !isOpen})}>
             <div className="sidebar__header">
@@ -18,7 +18,7 @@ function Sidebar({isOpen, setIsOpen, setIsNewPasswordVisible}: {isOpen: boolean,
                 
             </div>
             
-            <Link to="/nova-senha" onClick={()=>setIsNewPasswordVisible(true)}><button className="sidebar__button--new"><i className='bx  bx-plus'></i><span className="sidebar__nav-name">Nova Senha</span></button></Link>
+            <Link to="/nova-senha" state={{ backgroundLocation: location }} onClick={()=>setIsNewPasswordVisible(true)}><button className="sidebar__button--new"><i className='bx  bx-plus'></i><span className="sidebar__nav-name">Nova Senha</span></button></Link>
             <ul className="sidebar__list">
                 <li><NavLink to="/"><i className='bx  bx-lock'></i> <span className="sidebar__nav-name">Cofre</span></NavLink></li>
                 <li><NavLink to="/gerador-senhas"><i className='bx  bx-copy-plus'></i><span className="sidebar__nav-name">Gerador de Senhas</span></NavLink></li>
