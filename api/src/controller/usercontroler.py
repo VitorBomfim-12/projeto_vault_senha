@@ -7,11 +7,6 @@ from src.service.password_verify import verifica_senha_api as verify_password_fu
 from flask_restx import Resource, Namespace, fields
 from src.service.auth__service import AuthService
 
-user_ns = Namespace('auth', description = 'Opreações de autenticação')
-cadastro_model = user_ns.model('Cadastro', {
-    'email': fields.String(required=True, description='Email do usuário'),
-    'senha': fields.String(required=True, description='Senha do usuário')
-})
 
 
 @user_ns.route('/cadastro')
