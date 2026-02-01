@@ -1,11 +1,9 @@
 import { Button } from "primereact/button";
-import type { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
-import type { Location } from "react-router-dom";
+import { useAppNavigation } from "../contexts/NavigationContext";
 
-function VaultPage({setIsNewPasswordVisible, location}:{setIsNewPasswordVisible:Dispatch<SetStateAction<boolean>>, location: Location }) {
-    
-
+function VaultPage() {
+    const { setIsNewPasswordVisible, location } = useAppNavigation();
 
     return (
         <>

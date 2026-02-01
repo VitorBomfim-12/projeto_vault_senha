@@ -1,16 +1,10 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import type { Location } from "react-router-dom";
+import type { LocationState } from "../types/modal";
 
-interface LocationState {
-  backgroundLocation?: Location;
-}
-
-export function useRouteModal(isVisible: boolean) {
-    const location = useLocation() as Location<LocationState>;
+export function useRouteModal(isVisible: boolean, location: Location<LocationState>, background?: Location) {
     const navigate = useNavigate();
-    const background = location.state?.backgroundLocation;
-
 
     useEffect(()=> {
      const isModalRoute = location.pathname === '/nova-senha';

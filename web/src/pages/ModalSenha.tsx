@@ -1,14 +1,14 @@
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
-import type { Dispatch, SetStateAction } from "react";
 import CustomInputGroup from "../components/CustomInputGroup";
 import { Link, useNavigate } from "react-router-dom";
+import { useAppNavigation } from "../contexts/NavigationContext";
 
 
 
-function ModalSenha({isNewPasswordVisible, setIsNewPasswordVisible}: {isNewPasswordVisible: boolean, setIsNewPasswordVisible:Dispatch<SetStateAction<boolean>>}) {
+function ModalSenha() {
     const navigation = useNavigate();
-
+    const { isNewPasswordVisible, setIsNewPasswordVisible } = useAppNavigation();
 
     const headerContent =(
         <div className="modal__header">

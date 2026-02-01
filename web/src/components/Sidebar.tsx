@@ -1,20 +1,22 @@
 import { Link, NavLink } from "react-router-dom"
 import Logo from "./Logo"
 import classNames from "classnames"
-import type { Dispatch, SetStateAction } from "react"
-import type { Location } from "react-router-dom";
+import { useAppNavigation } from "../contexts/NavigationContext"
 
 
-function Sidebar({isOpen, setIsOpen, setIsNewPasswordVisible, location}: {isOpen: boolean,setIsOpen:Dispatch<SetStateAction<boolean>>, setIsNewPasswordVisible:Dispatch<SetStateAction<boolean>>, location: Location}) {
+function Sidebar() {
+    const { isSidebarOpen, setIsSidebarOpen, setIsNewPasswordVisible, location } = useAppNavigation();
+
+
     return (
-        <aside className={classNames("sidebar", {"sidebar--closed": !isOpen})}>
+        <aside className={classNames("sidebar", {"sidebar--closed": !isSidebarOpen})}>
             <div className="sidebar__header">
-                {isOpen ? 
+                {isSidebarOpen ? 
                     <>
                         <Logo />
-                        <button className="sidebar__button" onClick={()=>setIsOpen(false)}><i className='bx  bx-dock-left-alt'></i> </button>
+                        <button className="sidebar__button" onClick={()=>setIsSidebarOpen(false)}><i className='bx  bx-dock-left-alt'></i> </button>
                     </> 
-                : <button className="sidebar--open" onClick={()=>setIsOpen(true)}><i className='bx  bx-menu'></i> </button>}
+                : <button className="sidebar--open" onClick={()=>setIsSidebarOpen(true)}><i className='bx  bx-menu'></i> </button>}
                 
             </div>
             
