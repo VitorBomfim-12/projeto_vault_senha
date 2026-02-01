@@ -1,6 +1,5 @@
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import {  useEffect, useState } from "react";
-import type { Location } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import {   useState } from "react";
 import VaultPage from "./pages/VaultPage";
 import GenPasswordPage from "./pages/GenPasswordPage";
 import VerifyPasswordPage from "./pages/VerifyPasswordPage";
@@ -8,32 +7,18 @@ import AboutPage from "./pages/AboutPage";
 import ModalSenha from "./pages/ModalSenha";
 import DefaultLayout from "./pages/layout/DefaultLayout";
 import PageNotFound from "./pages/PageNotFound";
+import { useRouteModal } from "./hooks/useRouteModal";
 
-interface LocationState {
-  backgroundLocation?: Location;
-}
+
 
 
 function App() {
-  const [isOpen, setIsOpen] = useState(true);
-  const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
-  const location = useLocation() as Location<LocationState>;
-  const navigation = useNavigate();
-  const background = location.state?.backgroundLocation;
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isNewPasswordVisible, setIsNewPasswordVisible] = useState<boolean>(false);
 
-  useEffect(()=> {
-     const isModalRoute = location.pathname === '/nova-senha';
-     const lastPath = sessionStorage.getItem('modal_background');
+  const {location, background} = useRouteModal(isNewPasswordVisible);
 
 
-    if (isModalRoute && !isNewPasswordVisible && lastPath) {
-      sessionStorage.removeItem('modal_background');
-      navigation(lastPath, {replace: true});
-
-    }
-
-
-  }, [location, background, navigation, isNewPasswordVisible])
 
 
   return (
