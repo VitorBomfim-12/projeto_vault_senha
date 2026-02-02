@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@import "abstracts/variables";
+
+@import "base/base";
+@import "base/prime-custom";
+
+@import "components/sidebar";
+@import "components/header";
+@import "components/modal";
+@import "components/input-group";
+@import "components/footer";
+
+@import "pages/page-not-found";
+
+@import "layout/app-layout";
+@import "layout/login-layout";

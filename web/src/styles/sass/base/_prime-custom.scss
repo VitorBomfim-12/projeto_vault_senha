@@ -1,0 +1,122 @@
+.p-component {
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+.p-icon, .pi {
+    font-size: 1.6rem; 
+    vertical-align: middle;
+    line-height: 1.5; 
+}
+
+.p-component, .p-component * {
+    box-sizing: border-box;
+}
+
+.p-dialog-header {
+    border-bottom: 1px solid $surface-100;
+}
+
+.p-dialog-content {
+    padding-top: 1.6rem;
+}
+
+.p-dialog-footer {
+    border-top: 1px solid $surface-100;
+}
+
+
+// BUTTON OVERRIDE
+
+.p-button {
+    background: $primary;
+    border: 1px solid $primary;
+    color: $surface-1000;
+
+    &:not(:disabled):hover {
+        background: $primary-dark;
+        border-color: $primary-dark;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px $primary, 0 1px 2px 0 rgb(0, 0, 0);
+    }
+
+    &-secondary {
+        background-color: $surface-1000;
+        border: 1px solid $surface-1000;
+        color: $surface-100;
+
+        &:not(:disabled):hover {
+            background: $surface-900;
+            border-color: $surface-900;
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px $surface-1000, 0 1px 2px 0 rgb(0, 0, 0);
+        }
+
+    }
+
+    &-text {
+        background-color: transparent;
+        color: $primary;
+        border-color: transparent;
+
+        &:not(:disabled):hover {
+            background-color: rgba($primary, 0.2);
+            border-color: transparent;
+        }
+    }
+
+}
+
+// INPUTTEXT
+
+.p-inputtext {
+    color: #4b5563;
+    border: 1px solid $surface-300;
+
+    &::placeholder {
+        color: $surface-400;
+    }
+
+    &:enabled:hover {
+    border-color: $primary;
+    }
+
+    &:enabled:focus {
+        box-shadow: 0 0 0 0.2rem rgba($primary, 0.2) !important;
+        border-color: $primary;
+    }
+}
+
+.p-password, .p-password-input {
+    width: 100%;
+    display: block;
+}
+
+.p-icon-field > .p-input-icon {
+    margin-top: -1.1rem;
+}
+
+.p-password {
+    &-show-icon {
+        font-size: 1.6rem !important; // Aumenta o olho para um tamanho legível
+        color: $surface-500; // Usa sua paleta de cores
+        
+        &:hover {
+            color: $primary; // Fica Ciano ao passar o mouse, combinando com o tema
+        }
+    }
+
+    .p-icon {
+        height: 1.6rem;
+        width: 1.6rem;  
+    }
+}
+.p-dialog .p-dialog-header .p-dialog-header-icon {
+    top: 1rem;
+    right: 2rem;
+}
+

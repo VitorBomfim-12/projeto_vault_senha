@@ -1,57 +1,49 @@
-import { useState } from 'react'
+import { Route, Routes, useLocation } from "react-router-dom";
+import VaultPage from "./pages/VaultPage";
+import GenPasswordPage from "./pages/GenPasswordPage";
+import VerifyPasswordPage from "./pages/VerifyPasswordPage";
+import AboutPage from "./pages/AboutPage";
+import ModalSenha from "./pages/ModalSenha";
+import DefaultLayout from "./pages/layout/DefaultLayout";
+import PageNotFound from "./pages/PageNotFound";
+import { NavigationProvider } from "./contexts/NavigationContext";
+import type { Location } from "react-router-dom";
+import type { LocationState } from "./types/modal";
+import LoginPage from "./pages/LoginPage";
+import LoginLayout from "./pages/layout/LoginLayout";
+import CodePage from "./pages/CodePage";
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [mensagem, setMensagem] = useState('');
-
-  const handleAuth = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const endpoint = isLogin ? '/auth/login' : '/auth/cadastro';
-    try {
-      const response = await fetch(`http://localhost:5000${endpoint}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, senha }),
-      })
-
-      const data = await response.json();
-      setMensagem(data.message);
-
-      if (response.ok && isLogin) {
-        alert("Login realizado! Vá para o dashboard mocréia");
-      }
-    } catch {
-      setMensagem('Erro ao conectar com o servidor.');
-    }
-    setEmail('');
-    setSenha('');
-  }
+  const location = useLocation() as Location<LocationState>;
+  const background = location.state?.backgroundLocation;
 
   return (
-    <div>
-      <h1>{isLogin ? 'Login' : 'Cadastro'}</h1>
+    <NavigationProvider location={location} background={background}>
+      <Routes location={background || location}>
+        <Route path="/" element={<DefaultLayout />}>
+          <Route index path="/" element={<VaultPage />} />
+          <Route path="gerador-senhas" element={<GenPasswordPage />} />
+          <Route path="verificador-senhas" element={<VerifyPasswordPage />} />
+          <Route path="sobre" element={<AboutPage />} />
+        </Route>
+        <Route path="*" element={<PageNotFound />} />
 
-      <form onSubmit={handleAuth}>
-        <input
-          type="email" placeholder="Email" value={email}
-          onChange={(e) => setEmail(e.target.value)} required
-        />
-        <input
-          type="password" placeholder="Senha" value={senha}
-          onChange={(e) => setSenha(e.target.value)} required
-        />
-        <button type="submit">{isLogin ? 'Entrar' : 'Cadastrar'}</button>
-      </form>
+        <Route path="auth" element={<LoginLayout />} >
+          <Route index path="login" element={<LoginPage />} />
+          <Route path="verificacao" element={<CodePage />} />
+        </Route>
+      </Routes>
 
-      <p>{mensagem}</p>
-
-      <button onClick={() => { setIsLogin(!isLogin); setMensagem(''); }}>
-        {isLogin ? 'Não tem conta? Cadastre-se' : 'Já tem conta? Faça Login'}
-      </button>
-    </div>
-  )
+      {background && (
+        <Routes>
+          <Route path="*" element={null} />
+          <Route path="/nova-senha" element={<ModalSenha />} />
+        </Routes>
+      )
+      }
+      
+    </NavigationProvider>
+  );
 }
 
-export default App
+export default App;

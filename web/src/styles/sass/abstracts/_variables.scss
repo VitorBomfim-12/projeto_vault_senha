@@ -1,0 +1,53 @@
+//COLORS
+
+$primary: #ffd218;
+$primary-dark: #fbc113;
+$primary-light: #ffd744;
+
+$green-local: #44D091;
+$green-dark: #5EDEA5;
+$green-light: #D6FEE2;
+
+$red-local: #F97065;
+$red-dark: #FF897F;
+$red-light: #FFD6D3;
+
+$yellow-local: #F1D24F;
+$yellow-dark: #FFE784;
+$yellow-light: #FFFBE9;
+
+$orange-local: #FDB022;
+
+
+$surface-0: #FFFFFF;
+$surface-50: #EFF3F6;
+$surface-100: #DCE0E5;
+$surface-150: #C5CBD4;
+$surface-200: #A7B5C0;
+$surface-300: #BCBCC2;
+$surface-400: #A5A5AF;
+$surface-500: #8F8F9A;
+$surface-550: #808589;
+$surface-600: #6B6F73;
+$surface-700: #4D5258;
+$surface-800: #464D52;
+$surface-850: #30343B;
+$surface-900: #24282E;
+$surface-1000: #191C1E;
+
+$gray-50: #E2E2E2;
+$gray-100: #DCDCDC;
+$gray-200: #B3B1AA;
+$gray-250: #868686;
+$gray-300: #666A6F;
+
+$body-color: $surface-50;
+
+//FONTS
+
+$default-font-size: 1.6rem;
+$noto-family: "Noto Sans", sans-serif;
+$lexend-family: "Lexend Deca", sans-serif;
+
+//HELPERS
+$transition-default: all .2s ease;
