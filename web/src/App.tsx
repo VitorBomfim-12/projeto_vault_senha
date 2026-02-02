@@ -9,6 +9,9 @@ import PageNotFound from "./pages/PageNotFound";
 import { NavigationProvider } from "./contexts/NavigationContext";
 import type { Location } from "react-router-dom";
 import type { LocationState } from "./types/modal";
+import LoginPage from "./pages/LoginPage";
+import LoginLayout from "./pages/layout/LoginLayout";
+import CodePage from "./pages/CodePage";
 
 function App() {
   const location = useLocation() as Location<LocationState>;
@@ -24,6 +27,11 @@ function App() {
           <Route path="sobre" element={<AboutPage />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
+
+        <Route path="auth" element={<LoginLayout />} >
+          <Route index path="login" element={<LoginPage />} />
+          <Route path="verificacao" element={<CodePage />} />
+        </Route>
       </Routes>
 
       {background && (

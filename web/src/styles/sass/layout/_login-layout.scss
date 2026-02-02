@@ -1,0 +1,180 @@
+.login-container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+    background: 
+    repeating-linear-gradient(
+        $gray-200,
+        $gray-200 1px,
+        transparent 1px,
+        transparent 100px
+    ),
+    repeating-linear-gradient(
+        to right,
+        $gray-200,
+        $gray-200 1px,
+        transparent 1px,
+        transparent 100px
+    )
+    $gray-100;
+}
+
+.login {
+    &__card {
+        background-color: $surface-0;
+        min-width: 70rem;
+        min-height: 70rem;
+        border-radius: 50%;
+        border: 1px solid $gray-250;
+       
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+
+    &__header {
+        margin-top: auto;
+    }
+
+    &__logo {
+        height: 8rem;
+    }
+
+    &__content {
+        width: 60%;
+        
+        display: flex;
+        align-self: flex-start;
+        margin-top: 7rem;
+        gap: 2rem;
+        flex-direction: column;
+
+    }
+
+    &__header {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    &__greetings {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        & h1 {
+            font-size: 2.8rem;
+            color: $surface-1000;
+            font-weight: 600;
+        }
+
+        & p {
+            font-size: 1.4rem;
+            font-family: $lexend-family;
+            color: $gray-300;
+        }
+    }
+
+    &__form { 
+
+        & label {
+            font-family: $noto-family;
+            color: $surface-1000;
+        }
+
+        & input {
+            &:enabled:hover {
+                border-color: $surface-1000;
+            }
+
+            &:enabled:focus {
+                box-shadow: 0 0 0 0.2rem rgba($surface-1000, 0.2) !important;
+                border-color: $surface-1000;
+            }
+        }
+
+        & button {
+            width: 100%;
+            margin-top: 4rem;
+
+            background-color: $gray-200;
+            border-color: $gray-200;
+            color: $surface-0;
+
+            &:not(:disabled):hover {
+                background-color: $gray-250;
+                border-color: $gray-250;
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px $gray-200, 0 1px 2px 0 rgb(0, 0, 0);
+            }
+        }
+    }
+
+    &__stand-by {
+        position: absolute;
+        height: 25rem;
+
+        &--1 {
+            top: 2rem;
+            left: 2rem;
+        }
+
+        &--2 {
+            top: 2rem;
+            right: 2rem;
+        }
+
+        &--3 {
+            bottom: 2rem;
+            left: 2rem;
+        }
+
+        &--4 {
+            bottom: 2rem;
+            right: 2rem;
+        }
+    }
+
+    &__code {
+        text-align: center;
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        & .p-inputotp {
+            justify-content: space-evenly;
+        }
+
+        & .p-inputotp-input {
+            font-size: 2.8rem;
+            font-family: $lexend-family;
+            color: $surface-1000;
+            width: 6rem;
+            height: 6rem;
+            
+        }
+
+        & p {
+            font-size: 1.4rem;
+            color: $gray-300;
+            
+            & b {
+                cursor: pointer;
+            }
+        }
+    }
+
+}

@@ -473,4 +473,132 @@ h1 {
   font-family: "Lexend Deca", sans-serif;
 }
 
+.login-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: repeating-linear-gradient(#B3B1AA, #B3B1AA 1px, transparent 1px, transparent 100px), repeating-linear-gradient(to right, #B3B1AA, #B3B1AA 1px, transparent 1px, transparent 100px) #DCDCDC;
+}
+
+.login__card {
+  background-color: #FFFFFF;
+  min-width: 70rem;
+  min-height: 70rem;
+  border-radius: 50%;
+  border: 1px solid #868686;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login__header {
+  margin-top: auto;
+}
+.login__logo {
+  height: 8rem;
+}
+.login__content {
+  width: 60%;
+  display: flex;
+  align-self: flex-start;
+  margin-top: 7rem;
+  gap: 2rem;
+  flex-direction: column;
+}
+.login__header {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+}
+.login__greetings {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.login__greetings h1 {
+  font-size: 2.8rem;
+  color: #191C1E;
+  font-weight: 600;
+}
+.login__greetings p {
+  font-size: 1.4rem;
+  font-family: "Lexend Deca", sans-serif;
+  color: #666A6F;
+}
+.login__form label {
+  font-family: "Noto Sans", sans-serif;
+  color: #191C1E;
+}
+.login__form input:enabled:hover {
+  border-color: #191C1E;
+}
+.login__form input:enabled:focus {
+  box-shadow: 0 0 0 0.2rem rgba(25, 28, 30, 0.2) !important;
+  border-color: #191C1E;
+}
+.login__form button {
+  width: 100%;
+  margin-top: 4rem;
+  background-color: #B3B1AA;
+  border-color: #B3B1AA;
+  color: #FFFFFF;
+}
+.login__form button:not(:disabled):hover {
+  background-color: #868686;
+  border-color: #868686;
+}
+.login__form button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #B3B1AA, 0 1px 2px 0 rgb(0, 0, 0);
+}
+.login__stand-by {
+  position: absolute;
+  height: 25rem;
+}
+.login__stand-by--1 {
+  top: 2rem;
+  left: 2rem;
+}
+.login__stand-by--2 {
+  top: 2rem;
+  right: 2rem;
+}
+.login__stand-by--3 {
+  bottom: 2rem;
+  left: 2rem;
+}
+.login__stand-by--4 {
+  bottom: 2rem;
+  right: 2rem;
+}
+.login__code {
+  text-align: center;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.login__code .p-inputotp {
+  justify-content: space-evenly;
+}
+.login__code .p-inputotp-input {
+  font-size: 2.8rem;
+  font-family: "Lexend Deca", sans-serif;
+  color: #191C1E;
+  width: 6rem;
+  height: 6rem;
+}
+.login__code p {
+  font-size: 1.4rem;
+  color: #666A6F;
+}
+.login__code p b {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=style.css.map */
