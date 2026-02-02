@@ -4,7 +4,7 @@ from src.service.hash import hash_verify
 from src.service.func_dbManager import DB_MANAGER
 import bcrypt
 from flask_restx import Resource, Namespace, fields
-
+from api.src.service.temp_pass import  temp_pass_identify as temp_pass
 
 
 
@@ -30,6 +30,10 @@ class Login(Resource):
         if not hash_fijs or not hash_verify(hash_fijs) or (user_fingerprint != hash_fijs):
             MailManager.mfa_mail_sender(user_id)
             return{'status':'erro','message':'Hash incorreto'},403
+        
+        if temp_pass(user_id):
+            MailManager.mfa_mail_sender(user_id)
+            return {'status':'erro','message':'Necessário alterar a senha'},428
         
         
 
