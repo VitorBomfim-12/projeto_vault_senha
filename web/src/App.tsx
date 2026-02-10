@@ -12,6 +12,7 @@ import type { LocationState } from "./types/modal";
 import LoginPage from "./pages/LoginPage";
 import LoginLayout from "./pages/layout/LoginLayout";
 import CodePage from "./pages/CodePage";
+import ProtectedRoutes from "./pages/ProtectedRoutes";
 
 function App() {
   const location = useLocation() as Location<LocationState>;
@@ -20,8 +21,8 @@ function App() {
   return (
     <NavigationProvider location={location} background={background}>
       <Routes location={background || location}>
-        <Route path="/" element={<DefaultLayout />}>
-          <Route index path="/" element={<VaultPage />} />
+        <Route path="/" element={<ProtectedRoutes><DefaultLayout /></ProtectedRoutes>}>
+          <Route index element={<VaultPage />} />
           <Route path="gerador-senhas" element={<GenPasswordPage />} />
           <Route path="verificador-senhas" element={<VerifyPasswordPage />} />
           <Route path="sobre" element={<AboutPage />} />

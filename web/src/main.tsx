@@ -8,13 +8,16 @@ import 'primeicons/primeicons.css';
 import './styles/css/style.css'
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom';
+import { AuthenticationProvider } from './contexts/AuthenticationContext.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <PrimeReactProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </PrimeReactProvider>
+    <AuthenticationProvider>
+      <PrimeReactProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PrimeReactProvider>
+    </AuthenticationProvider>
   </StrictMode>,
 )
