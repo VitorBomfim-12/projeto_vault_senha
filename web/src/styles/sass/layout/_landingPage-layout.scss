@@ -93,35 +93,7 @@
             letter-spacing: -0.1px;
         }
 
-        & a {
-            text-transform: uppercase;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 30%;
-            text-decoration: none;
-            padding-bottom: 3px;
-            position: relative;
-            font-family: $poppins-family;
-            font-style: italic;
-            font-size: 1.8rem;
-            color: $primary;
-            overflow: hidden;
-            font-weight: 200;
-
-            & i {
-                font-size: 2.5rem;
-            }
-
-            &::after {
-                content: '';
-                width: 100%;
-                height: 1px;
-                background-color: $primary;
-                position: absolute;
-                bottom: 0;
-            }
-        }
+    
 
         & p {
             font-family: $noto-family;
@@ -135,6 +107,55 @@
             font-style: italic;
             color: $surface-0;
             font-weight: 100;
+        }
+    }
+
+    &__login-link {
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 30%;
+        text-decoration: none;
+        padding-bottom: 3px;
+        position: relative;
+        font-family: $poppins-family;
+        font-style: italic;
+        font-size: 1.8rem;
+        color: $primary;
+        overflow: hidden;
+        font-weight: 200;
+        transition: $transition-default;
+        
+
+        & i {
+            font-size: 2.5rem;
+        }
+
+        &::after {
+            content: '';
+            width: 100%;
+            height: 1px;
+            background-color: $primary;
+            position: absolute;
+            bottom: 0;
+
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+
+            & i {
+                animation: login-effect .6s ease-out forwards;
+            }
+
+            & span {
+                animation: login-text-effect .5s ease forwards;
+            }
+        }
+
+        &:active {
+            transform: translateY(0px);
         }
     }
 
@@ -172,7 +193,7 @@
         
 
         &-header {
-            font-size: 5rem;
+            font-size: 4rem;
             font-family: $poppins-family;
             font-style: italic;
             padding: 3rem 0;
@@ -205,7 +226,7 @@
             }
 
             & h3 {
-                font-size: 3.5rem;
+                font-size: 2.8rem;
                 font-weight: 500;
                 line-height: 156%;
                 letter-spacing: -1px;
@@ -258,5 +279,205 @@
             }
         }
 
+    }
+
+
+    &__form {
+        width: 100%;
+        height: 140vh;
+        padding: 4rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        background: 
+            linear-gradient(
+                $surface-0 0%,
+                transparent
+            ),
+            linear-gradient(
+                transparent,
+                $surface-0 95%
+            ),
+            repeating-linear-gradient(
+                $surface-200,
+                $surface-200 1px,
+                transparent 1px,
+                transparent 40px
+            ),
+            repeating-linear-gradient(
+                to right,
+                $surface-200,
+                $surface-200 1px,
+                transparent 1px,
+                transparent 40px
+            ),    
+        $surface-0;
+
+        &-header {
+            align-self: flex-start;
+            margin-bottom: auto;
+            margin-left: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+
+            & h2 {
+                font-size: 9rem;
+                width: 80%;
+                text-transform: uppercase;
+                font-family: $racing-family;
+                font-weight: 400;
+                color: $surface-850;
+            }
+
+            & h3 {
+                font-family: $lexend-family;
+                font-weight: 400;
+                font-size: 2.5rem;
+                width: 60%;
+                color: $surface-600
+            }
+
+            & p {
+                font-family: $noto-family;
+                color: $surface-850
+
+            }
+            & a {
+                color: $surface-850;
+                font-weight: 600;
+                transition: $transition-default;
+
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+
+        &-content {
+            margin-bottom: auto;
+            width: 40%;
+            font-size: 2rem;
+            background-color: $surface-0;
+            padding: 5rem 6rem;
+            border: 1px solid $surface-100;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+   
+            & form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            & button {
+                width: 100%;
+                margin-top: 6rem;
+            }
+
+            & p {
+                font-size: 1.4rem;
+                color: $surface-400;
+                font-family: $noto-family;
+                align-self: flex-start;
+                margin-bottom: 3.5rem;
+            }
+        }
+    }
+
+    &__footer {
+        width: 100%;
+        position: absolute;
+        bottom: -10rem;
+        background-color: $surface-1000;
+       
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 4rem 0;
+
+        & img {
+            height: 4rem;
+        }
+
+        & p {
+            color: $surface-400;
+            font-size: 1.4rem;
+        }
+
+        &-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+         & i {
+            font-size: 2.5rem;
+            color: $surface-400;
+
+        }
+
+        & a {
+            transition: $transition-default;
+
+            &:hover {
+                transform: translateY(-5px);
+                
+                & i {
+
+                    color: $surface-100;
+                }
+            }
+        }
+
+       
+    }
+
+    &__cadastro-btn {
+        color: $surface-550;
+        transition: $transition-default;
+
+        &:hover {
+            color: $surface-400;
+        }
+    }
+}
+
+@keyframes login-effect {
+    0% {
+        transform: translateX(0);
+    }
+    9% {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    10% {
+        transform: translateX(-40px);
+    }
+    11% {
+        transform: translateX(-20rem);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-15rem);
+    }
+}
+
+@keyframes login-text-effect {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(60%);
     }
 }
