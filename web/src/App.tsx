@@ -25,8 +25,8 @@ function App() {
           <Route index element={<VaultPage />} />
           <Route path="gerador-senhas" element={<GenPasswordPage />} />
           <Route path="verificador-senhas" element={<VerifyPasswordPage />} />
-          <Route path="sobre" element={<AboutPage />} />
         </Route>
+        <Route path="sobre" element={<AboutPage />} />
         <Route path="*" element={<PageNotFound />} />
 
         <Route path="auth" element={<LoginLayout />} >

@@ -1,6 +1,11 @@
+import Navbar from "../components/Navbar"
+
 function AboutPage() {
     return (
-        <h1>Sobre</h1>
+        <main className="landing-main">
+            <Navbar />
+            <h1>Sobre</h1>
+        </main>
     )
 }
 
