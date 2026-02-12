@@ -13,6 +13,7 @@ import LoginPage from "./pages/LoginPage";
 import LoginLayout from "./pages/layout/LoginLayout";
 import CodePage from "./pages/CodePage";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
+import Profile from "./pages/Profile";
 
 function App() {
   const location = useLocation() as Location<LocationState>;
@@ -25,6 +26,7 @@ function App() {
           <Route index element={<VaultPage />} />
           <Route path="gerador-senhas" element={<GenPasswordPage />} />
           <Route path="verificador-senhas" element={<VerifyPasswordPage />} />
+          <Route path="perfil" element={<Profile />} />
         </Route>
         <Route path="sobre" element={<AboutPage />} />
         <Route path="*" element={<PageNotFound />} />

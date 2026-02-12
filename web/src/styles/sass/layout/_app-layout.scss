@@ -10,19 +10,24 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-image: url(/config-vault-76.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 60vh;
-    overflow: hidden;
+    overflow-x: hidden;
     min-height: 0;
+    gap: 1rem;
     position: relative;
 }
 
 .content {
-    height: 100%;
+    height: auto;
     width: 90%;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
 
     &--not-found {
         height: 100vh;

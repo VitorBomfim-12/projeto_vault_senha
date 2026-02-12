@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar"
 
 function AboutPage() {
     return (
-        <main className="landing-main">
+        <main className="landing-main about-main">
             <Navbar />
             <h1>Sobre</h1>
             <Footer />

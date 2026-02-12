@@ -2,7 +2,10 @@ import { createContext, useContext, useReducer, type ReactNode } from "react";
 
 type User = {
     email: string,
-    password: string
+    password: string,
+    name?: string,
+    lastName?: string,
+    type?: string,
 }
 
 interface ContextValues {
@@ -10,6 +13,7 @@ interface ContextValues {
   isAuthenticated: boolean,
   login: (email: string, password: string) => void,
   logout:() => void,
+  error?: string
 }
 
 const AuthContext = createContext<ContextValues | null>(null);
@@ -19,6 +23,7 @@ const AuthContext = createContext<ContextValues | null>(null);
 interface AuthState {
     user: User | null;
     isAuthenticated: boolean;
+    error?: string,
 }
 
 const initialState: AuthState = {
@@ -28,11 +33,13 @@ const initialState: AuthState = {
 
 const FAKE_USER = {
   name: "Taís",
+  lastName: "Souza",
+  type: 'E',
   email: "tais.souza@gmail.com",
   password: "teste",
 };
 
-type ReducerAction = | {type: 'login', payload: User} | {type: 'logout'}
+type ReducerAction = | {type: 'login', payload: User} | {type: 'logout'} | {type: 'error'};
 
 
 function reducer(state: AuthState, action: ReducerAction): AuthState {
@@ -41,6 +48,8 @@ function reducer(state: AuthState, action: ReducerAction): AuthState {
             return {...state, user: action.payload ?? null, isAuthenticated: true};
         case 'logout':
             return {...state, user: null, isAuthenticated: false};
+        case 'error':
+            return {...state, error: "Email ou senha incorretos"}
         default:
             throw new Error('Unknown action');
     }
@@ -48,11 +57,14 @@ function reducer(state: AuthState, action: ReducerAction): AuthState {
 
 
 function AuthenticationProvider({children}: {children: ReactNode}) {
-    const [{user, isAuthenticated}, dispatch] = useReducer(reducer, initialState);
+    const [{user, isAuthenticated, error}, dispatch] = useReducer(reducer, initialState);
     
     
     function login(email: string, password: string) {
-        if(email === FAKE_USER.email && password === FAKE_USER.password) dispatch({type: 'login', payload: FAKE_USER})
+        if(email === FAKE_USER.email && password === FAKE_USER.password) dispatch({type: 'login', payload: FAKE_USER});
+        if(email !== FAKE_USER.email || password !== FAKE_USER.password) dispatch({type: 'error' })
+        
+    
     }
     
     function logout() {
@@ -61,7 +73,7 @@ function AuthenticationProvider({children}: {children: ReactNode}) {
     
     
     return (
-        <AuthContext.Provider value={{user, isAuthenticated, login, logout}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{user, isAuthenticated, login, logout, error}}>{children}</AuthContext.Provider>
     )
 }
 

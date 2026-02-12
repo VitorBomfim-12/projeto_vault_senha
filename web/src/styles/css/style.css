@@ -287,6 +287,22 @@ body {
   opacity: 0;
   visibility: hidden;
 }
+.sidebar--closed .sidebar__profile:hover {
+  background-color: transparent !important;
+}
+.sidebar--closed .sidebar__profile:hover .sidebar__user {
+  transform: scale(1.05);
+}
+.sidebar--closed .sidebar__profile a {
+  padding-left: 0;
+}
+.sidebar--closed .sidebar__profile a:hover {
+  background: transparent !important;
+}
+.sidebar--closed .sidebar__profile a h4, .sidebar--closed .sidebar__profile a h5 {
+  opacity: 0;
+  visibility: hidden;
+}
 .sidebar--open {
   border: none;
   border-radius: 50%;
@@ -321,11 +337,41 @@ body {
   visibility: hidden;
   transition: opacity 0.1s ease 0.2s, visibility 0s 0.3s;
 }
+.sidebar__profile {
+  display: flex;
+  align-items: center;
+}
+.sidebar__profile a {
+  display: flex;
+  gap: 1.4rem !important;
+  width: 100%;
+}
+.sidebar__user {
+  background-color: rgb(236, 29, 95);
+  color: rgb(255, 155, 185);
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+.sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+}
+.sidebar__user-info h4 {
+  font-weight: 500;
+}
+.sidebar__user-info h5 {
+  font-weight: 400;
+}
 
 .header {
   width: 120%;
   margin-left: -10rem;
-  height: 8.8rem;
+  min-height: 7rem;
   background-color: #FFFFFF;
   margin-bottom: 2.5rem;
 }
@@ -334,8 +380,8 @@ body {
   position: absolute;
   background-color: #FFFFFF;
   width: 100%;
-  height: 6rem;
-  z-index: 0;
+  height: 7rem;
+  z-index: 1;
 }
 
 .modal__header {
@@ -437,6 +483,50 @@ body {
   color: #8F8F9A;
 }
 
+.profile__header {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+  padding: 2rem 4rem;
+  box-sizing: border-box;
+  border: 1px solid #DCE0E5;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+.profile__user {
+  background-color: rgb(236, 29, 95);
+  color: rgb(255, 155, 185);
+  padding: 2.4rem;
+  border-radius: 50%;
+  font-size: 4rem;
+  border: 1px solid #DCE0E5;
+}
+.profile__user span {
+  font-weight: 600;
+}
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+}
+.profile__info h3 {
+  font-size: 2.2rem;
+  color: #30343B;
+}
+.profile__info h4 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #8F8F9A;
+  font-family: "Noto Sans", sans-serif;
+}
+.profile__info h5 {
+  font-size: 1.4rem;
+  color: #8F8F9A;
+  font-family: "Noto Sans", sans-serif;
+}
+
 .main {
   display: flex;
   width: 100%;
@@ -449,19 +539,24 @@ body {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-image: url(/config-vault-76.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 60vh;
-  overflow: hidden;
+  overflow-x: hidden;
   min-height: 0;
+  gap: 1rem;
   position: relative;
 }
 
 .content {
-  height: 100%;
+  height: auto;
   width: 90%;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2rem;
 }
 .content--not-found {
   height: 100vh;
@@ -980,6 +1075,9 @@ h1 {
   to {
     transform: translateX(60%);
   }
+}
+.about-main {
+  height: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */
