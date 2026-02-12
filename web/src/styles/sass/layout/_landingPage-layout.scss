@@ -290,6 +290,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin-bottom: 15rem;
 
         background: 
             linear-gradient(
@@ -395,7 +396,8 @@
     &__footer {
         width: 100%;
         position: absolute;
-        bottom: -10rem;
+        bottom: 0;
+       
         background-color: $surface-1000;
        
 

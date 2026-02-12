@@ -4,8 +4,14 @@ import AccordionHome from "../components/AccordionHome"
 import CustomInputGroup from "../components/CustomInputGroup"
 import { Button } from "primereact/button"
 import Footer from "../components/Footer"
+import { useState } from "react"
 
 function LandingPage() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmation, setConfirmation] = useState('');
+
+
     return (
         <main className="landing-main">
             <Navbar />
@@ -35,9 +41,9 @@ function LandingPage() {
                 <div className="home__form-content">
                     <p>Cadastre suas informações abaixo e garanta o seu acesso ao Vault 76</p>
                     <form>
-                        <CustomInputGroup label="Email" placeholder="Digite o email para o administrador..." />
-                        <CustomInputGroup label="Senha" placeholder="Digite a senha..." type="password" />
-                        <CustomInputGroup label="Confirmar Senha" placeholder="Digite a senha novamente..." type="password" />
+                        <CustomInputGroup state={email} setState={setEmail} label="Email" placeholder="Digite o email para o administrador..." />
+                        <CustomInputGroup state={password} setState={setPassword} label="Senha" placeholder="Digite a senha..." type="password" />
+                        <CustomInputGroup state={confirmation} setState={setConfirmation} label="Confirmar Senha" placeholder="Digite a senha novamente..." type="password" />
                         <Button severity="secondary" label="Cadastrar" />
                     </form>
                 </div>

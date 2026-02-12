@@ -937,6 +937,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 15rem;
   background: linear-gradient(#FFFFFF 0%, transparent), linear-gradient(transparent, #FFFFFF 95%), repeating-linear-gradient(#A7B5C0, #A7B5C0 1px, transparent 1px, transparent 40px), repeating-linear-gradient(to right, #A7B5C0, #A7B5C0 1px, transparent 1px, transparent 40px), #FFFFFF;
 }
 .home__form-header {
@@ -1007,7 +1008,7 @@ h1 {
 .home__footer {
   width: 100%;
   position: absolute;
-  bottom: -10rem;
+  bottom: 0;
   background-color: #191C1E;
   display: flex;
   justify-content: space-around;
@@ -1077,7 +1078,51 @@ h1 {
   }
 }
 .about-main {
-  height: 100vh;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  padding: 1.8rem;
+  align-items: center;
+  position: relative;
+}
+
+.about__cta {
+  height: 80vh;
+  width: 100%;
+  border-radius: 1.5rem;
+  background: url(/gear_icon.svg) no-repeat center, radial-gradient(50% 50% at 50% 50%, #6E7B84 0%, #191C1E 100%);
+  background-size: 60rem, auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.about__headers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+.about__headers h1 {
+  margin-bottom: 3rem;
+  font-size: 4.6rem;
+  color: #FFFFFF;
+}
+.about__headers h2 {
+  color: #C5CBD4;
+  font-weight: 500;
+}
+.about__headers p {
+  width: 60%;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  line-height: 151%;
+  color: rgba(255, 255, 255, 0.8);
+}
+.about__authors {
+  margin-bottom: 30rem;
 }
 
 /*# sourceMappingURL=style.css.map */

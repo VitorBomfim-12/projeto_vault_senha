@@ -1,3 +1,58 @@
 .about-main {
-    height: 100vh;
+    background-color: $surface-0;
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+    padding: 1.8rem;
+    align-items: center;
+    position: relative;
+}
+
+.about {
+    &__cta {
+        height: 80vh;
+        width: 100%;
+        border-radius: 1.5rem;
+        background:  url(/gear_icon.svg) no-repeat center , radial-gradient(50% 50% at 50% 50%, #6E7B84 0%, #191C1E 100%);
+        background-size: 60rem, auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__headers {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: auto;
+   
+
+        & h1 {
+            margin-bottom: 3rem;
+            font-size: 4.6rem;
+            color: $surface-0;
+        }
+
+        & h2 {
+            color: $surface-150;
+            font-weight: 500;
+        }
+
+        & p {
+            width: 60%;
+            text-align: center;
+            font-family: $noto-family;
+            line-height: 151%;
+            color: rgba($surface-0, 0.8)
+        }
+    }
+
+    &__authors {
+        margin-bottom: 30rem;
+    }
+
+
 }
