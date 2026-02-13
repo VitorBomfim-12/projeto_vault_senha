@@ -9,25 +9,6 @@ from src.service.auth__service import AuthService
 
 
 
-@user_ns.route('/cadastro')
-class Register(Resource):
-    @user_ns.expect(cadastro_model)
-    def post(self):
-        email = user_ns.payload.get('email')
-        senha = user_ns.payload.get('senha')
-        
-        resultado, status = AuthService.cadastrar_usuario(email, senha)
-        return resultado, status
-
-@user_ns.route('/login')
-class Login(Resource):
-    @user_ns.expect(cadastro_model)
-    def post(self):
-        email = user_ns.payload.get('email')
-        senha = user_ns.payload.get('senha')
-        
-        resultado, status = AuthService.validar_login(email, senha)
-        return resultado, status
 
 
 class UserManager:

@@ -7,14 +7,14 @@ from src.service.extensions.session import session
 from dotenv import load_dotenv
 from config import Config
 from flask import jsonify
-from src.controller.usercontroler import user_ns
+from src.controller.logincontroler import user_log_trial
 load_dotenv()
 
 app = Flask(__name__,template_folder=os.path.join('src/view','templates'),
             static_folder=os.path.join('src/view','static'))
 CORS(app)
 api = Api(app, title="Vault API", doc='/docs')
-api.add_namespace(user_ns)
+api.add_namespace(user_log_trial)
 app.config.from_object(Config)
 mail.init_app(app)
 session.init_app(app)
