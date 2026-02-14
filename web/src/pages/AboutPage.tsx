@@ -79,12 +79,14 @@ function AboutPage() {
                 </div>
             </section>
             <section className="about__info">
-                <h2>OBJETIVO</h2>
-                <h3>Técnico</h3>
+                <div className="about__info-header">
+                    <h2>OBJETIVO</h2>
+                    <h3>técnico</h3>
+                </div>
                 <div className="about__info-texts">
                     <p>Feito por estudantes do curso de Análise e Desenvolvimento de Sistemas e Desenvolvimento de Software Multiplataforma da FATEC-SJC.</p>
-                    <p>Com  o objetivo de ser uma atividade prática para desenvolvimento de habilidades em  desenvolvimento WEB FrontEnd e BackEnd, </p>
-                    <p>Treino de POO, princípios de segurança da informação e desenvolvimento de produtos voltados a empresas.</p>
+                    <p>Com  o objetivo de ser uma atividade prática para desenvolvimento de habilidades em  <b>desenvolvimento WEB FrontEnd e BackEnd.</b> </p>
+                    <p>Treino de <b>POO</b>, princípios de <b>segurança da informação</b> e desenvolvimento de produtos voltados a <b>empresas.</b></p>
                 </div>
             </section>
             <section className="about__description">

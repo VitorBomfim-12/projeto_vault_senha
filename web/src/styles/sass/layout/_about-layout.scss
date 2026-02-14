@@ -2,7 +2,7 @@
     background-color: $surface-0;
     display: flex;
     flex-direction: column;
-    gap: 10rem;
+    gap:17rem;
     padding: 1.8rem;
     align-items: center;
     position: relative;
@@ -54,5 +54,72 @@
         margin-bottom: 30rem;
     }
 
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 4.5rem;
+        width: 100%;
+        margin: auto;
 
+        &-header {
+            transform: rotateZ(-20deg);
+            width: 15%;
+            font-size: 4.5rem;
+            margin-left: 10rem;
+            font-family: $racing-family;
+            display: flex;
+            flex-direction: column;
+            line-height: 130%;
+            color: $surface-850;
+
+            & h3 {
+                font-size: 4rem;
+                font-family: $poppins-family;
+                font-weight: 600;
+                align-self: flex-end;
+                margin-right: -15rem;
+                font-style: italic;
+            }
+        }
+
+        &-texts {
+            display: flex;
+            justify-content: space-evenly;
+            font-family: $lexend-family;
+            font-size: 2.2rem;
+            gap: 3rem;
+            line-height: 156%;
+            letter-spacing: -1px;
+            width: 90%;
+            margin: auto;
+            
+            color: $surface-850;
+        }
+    }
+
+    &__description {
+        width: 100%;
+        background:  url(/gear_icon.svg) no-repeat 15rem , url(/gear_icon.svg) no-repeat 95rem, linear-gradient(to top, 
+        white 0px, white 12px,        /* Linha inferior (mais grossa) */
+        transparent 12px, transparent 20px, 
+        white 20px, white 28px,      /* Linha do meio */
+        transparent 28px, transparent 36px, 
+        white 36px, white 40px,      /* Linha superior (mais fina) */
+        transparent 40px             
+    ) no-repeat bottom / 100% 60px, $surface-1000;
+        background-size: 35rem, 35rem, auto;
+        height: 70vh;
+        border-radius: 1.5rem;
+        color: $surface-150;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & p {
+            width: 50%;
+            text-align: center;
+            font-size: 3rem;
+            line-height: 156%;
+        }
+    }
 }
