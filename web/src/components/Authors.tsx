@@ -13,8 +13,8 @@ function Authors({picture, name, type, description, linkedin, github}: {picture:
                 </div>
                 <p>{description}</p>
                 <div className="about__authors-footer">
-                    <Link to={linkedin}><i className="bxl bx-linkedin-square" />.-.. .. -. -.- . -.. .. -.</Link>
-                    <Link to={github}><i className="bxl bx-github" />--. .. - .... ..- -...</Link>
+                    <Link to={linkedin} target="_blank"><i className="bxl bx-linkedin-square" />.-.. .. -. -.- . -.. .. -.</Link>
+                    <Link to={github} target="_blank"><i className="bxl bx-github" />--. .. - .... ..- -...</Link>
                 </div>
             </div>
         </div>

@@ -39,28 +39,28 @@ function AboutPage() {
 
     const devArray = [
         {
-            picture: '/picture',
+            picture: '/dev_tais.png',
             type: 'FrontEnd',
             name: 'Taís Souza',
             description: 'Atuei como UI/UX designer e programadora FrontEnd responsável pela introdução do React ao projeto.',
-            linkedin: 'link.linkedin',
-            github: 'link.github'
+            linkedin: 'https://www.linkedin.com/in/tais-f-souza/',
+            github: 'https://github.com/tat4Souza'
         },
         {
-            picture: '/picture',
+            picture: '/dev_vitor.png',
             type: 'BackEnd',
             name: 'Vitor Bomfim',
             description: 'Lorem Ipsium',
-            linkedin: 'link.linkedin',
-            github: 'link.github'
+            linkedin: 'https://www.linkedin.com/in/vitor-bomfim-122339289/',
+            github: 'https://github.com/VitorBomfim-12'
         },
         {
-            picture: '/picture',
+            picture: '/dev_hugo.png',
             type: 'BackEnd',
             name: 'Hugo Leonardo',
             description: 'Lorem Ipsium',
-            linkedin: 'link.linkedin',
-            github: 'link.github'
+            linkedin: 'https://www.linkedin.com/in/hugo-leonardo-perestrelo-pires-dos-santos-558547393/',
+            github: 'https://github.com/HUGO0895'
         },
     ]
 
@@ -96,7 +96,10 @@ function AboutPage() {
                 {techArray.map((card, index)=> <TechCard name={card.name} category={card.category} description={card.description} key={index} />)}
             </section>
             <section className="about__authors">
-                {devArray.map((dev, index)=> <Authors name={dev.name} type={dev.type} picture={dev.picture} linkedin={dev.linkedin} github={dev.github} description={dev.description} key={index} />)}
+                <h2 className="about__authors-title"><i className="bx bx-globe-alt-3" />Contribuidores<i className="bx bx-globe-alt-3" /></h2>
+                <div className="about__authors-container">
+                    {devArray.map((dev, index)=> <Authors name={dev.name} type={dev.type} picture={dev.picture} linkedin={dev.linkedin} github={dev.github} description={dev.description} key={index} />)}
+                </div>
             </section>
             <Footer />
         </main>
